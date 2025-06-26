@@ -34,38 +34,38 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="scroll-smooth bg-brand-darktop text-brand-lightbg py-24 px-72 md:px-20 lg:px-96 relative z-10"
+      className="scroll-smooth bg-brand-darktop text-brand-lightbg py-24 px-6 sm:px-10 md:px-20 lg:px-72 xl:px-96 relative z-10"
     >
       <div className="mb-12">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Projects</h2>
       </div>
 
-      <div className="grid gap-10 md:grid-cols-1 lg:grid-cols-1">
+      <div className="grid gap-10">
         {projects.map((project, index) => (
           <Fragment key={index}>
-            <div className="rounded-xl overflow-hidden shadow-lg backdrop-blur-md min-h-[300px] flex flex-col md:flex-row">
+            <div className="rounded-xl overflow-hidden shadow-lg backdrop-blur-md min-h-[400px] flex flex-col md:flex-row">
               {/* IMAGE */}
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-6 flex justify-center items-center md:w-1/2"
+                className="p-4 sm:p-6 flex justify-center items-center md:w-1/2"
               >
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="max-w-[100%] h-auto rounded-xl shadow-md"
+                  className="w-full max-h-[500px] object-cover rounded-xl shadow-md"
                 />
               </a>
 
               {/* TEXT + LOGO */}
-              <div className="p-6 pt-4 md:pt-8 flex flex-col justify-start md:w-1/2 ml-10">
-                <div className="flex justify-between items-start">
+              <div className="p-4 sm:p-6 pt-4 md:pt-8 flex flex-col justify-start md:w-1/2">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
                   <div>
-                    <h3 className="text-3xl font-semibold mb-4 text-brand-lightbg">
+                    <h3 className="text-2xl sm:text-3xl font-semibold mb-2 text-brand-lightbg">
                       {project.title}
                     </h3>
-                    <p className="text-md text-brand-lightbg/80 mb-6">
+                    <p className="text-sm sm:text-base text-brand-lightbg/80 mb-4">
                       {project.description}
                     </p>
                   </div>
@@ -73,7 +73,7 @@ const Projects = () => {
                     <img
                       src={project.logo}
                       alt={`${project.title} Logo`}
-                      className="w-20 h-20 object-contain ml-4 bg-white rounded-full px-2"
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-contain bg-white rounded-full p-2 shadow-md"
                     />
                   )}
                 </div>
@@ -83,7 +83,7 @@ const Projects = () => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-bold text-base mb-6"
+                  className="inline-flex items-center gap-2 font-bold text-sm sm:text-base text-brand-accent mb-4"
                 >
                   VISIT WEBSITE <ArrowUpRight strokeWidth={3} />
                 </a>
@@ -105,7 +105,7 @@ const Projects = () => {
 
             {/* DIVIDER */}
             {index !== projects.length - 1 && (
-              <div className="border-t border-white/50 w-full" />
+              <div className="border-t border-white/30 w-full mt-10" />
             )}
           </Fragment>
         ))}
