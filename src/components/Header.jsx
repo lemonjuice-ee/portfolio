@@ -9,7 +9,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo / Name */}
         <h1 className="text-xl font-bold text-brand-lightbg">
-          &lt;lemonjuice<span className="text-brand-red">.ee</span>&gt;
+          &lt;fritz<span className="text-brand-red">.yu</span>&gt;
         </h1>
 
         {/* Desktop Navigation */}
@@ -17,7 +17,6 @@ const Header = () => {
           <nav className="flex gap-6">
             <a href="#home" className="hover:text-brand-accent transition font-semibold">Home</a>
             <a href="#projects" className="hover:text-brand-accent transition font-semibold">Projects</a>
-            <a href="#skills" className="hover:text-brand-accent transition font-semibold">Skills</a>
           </nav>
           <a
             href="#contact"
@@ -29,7 +28,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-brand-light"
+          className="md:hidden text-white"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -42,7 +41,6 @@ const Header = () => {
           <nav className="flex flex-col gap-4 text-brand-lightbg text-sm font-medium">
             <a href="#home" onClick={() => setIsOpen(false)} className="hover:text-brand-accent">Home</a>
             <a href="#projects" onClick={() => setIsOpen(false)} className="hover:text-brand-accent">Projects</a>
-            <a href="#skills" onClick={() => setIsOpen(false)} className="hover:text-brand-accent">Skills</a>
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}

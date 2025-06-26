@@ -74,11 +74,11 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="bg-brand-dark text-brand-lightbg min-h-screen flex items-center justify-center px-6 relative overflow-hidden"
+      className="bg-brand-darktop text-brand-lightbg min-h-screen flex items-center justify-center px-6 relative overflow-hidden"
     >
      <div className="text-center max-w-2xl animate-fade-in z-10">
-  <h1 className="text-7xl md:text-8xl font-bold mb-4 leading-tight">
-     Fritz<span className="text-brand-accent"> Yu</span>
+  <h1 className="text-6xl md:text-7xl font-bold mb-4 leading-tight">
+     Hi, I'm Fritz<span className="text-brand-accent"> Yu</span>
   </h1>
   <div>
   <p className="text-xl md:text-2xl text-brand-lightbg mb-6 overflow-hidden whitespace-nowrap border-r-4 border-brand-lightbg inline-block animate-typewriter">
@@ -88,7 +88,7 @@ const Hero = () => {
     href="#contact"
     className="text-lg inline-block bg-brand-accent hover:bg-brand-red text-white px-6 py-3 rounded-md font-semibold transition duration-300"
   >
-    Let's Talk!
+    Contact Me
   </a>
 
   {/* Typewriter animation style */}
@@ -115,34 +115,36 @@ const Hero = () => {
 
       {/* Triangles */}
       <div className="absolute inset-0 pointer-events-none">
-        {triangles.map(({ size, stroke, opacity, duration, delay }, i) => (
-          <svg
-            key={i}
-            width={size}
-            height={size}
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke={stroke}
-            strokeWidth="2"
-            strokeLinecap="butt"
-            strokeLinejoin="miter"
-            style={{
-              opacity,
-              position: "absolute",
-              top: 0,
-              left: 0,
-              animationName: `floatMove${i}`,
-              animationDuration: `${duration}s`,
-              animationTimingFunction: "ease-in-out",
-              animationIterationCount: "infinite",
-              animationDirection: "alternate",
-              animationDelay: `${delay}s`,
-              transformOrigin: "50% 50%",
-            }}
-          >
-            <polygon points="12 2 22 20 2 20" />
-          </svg>
-        ))}
+ {triangles.map(({ size, stroke, opacity, duration, delay }, i) => (
+  <svg
+    key={i}
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={stroke}
+    strokeWidth="2"
+    strokeLinecap="butt"
+    strokeLinejoin="miter"
+    style={{
+      opacity,
+      position: "absolute",
+      top: 0,
+      left: 0,
+      transform: `translate(${randomPositions[i][0][0]}vw, ${randomPositions[i][0][1]}vh) rotate(0deg)`,
+      animationName: `floatMove${i}`,
+      animationDuration: `${duration}s`,
+      animationTimingFunction: "ease-in-out",
+      animationIterationCount: "infinite",
+      animationDirection: "alternate",
+      animationDelay: `-${delay}s`, // ✅ Start animation partway through
+      transformOrigin: "50% 50%",
+    }}
+  >
+    <polygon points="12 2 22 20 2 20" />
+  </svg>
+))}
+
       </div>
 
       {/* Keyframes style */}
