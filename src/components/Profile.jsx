@@ -1,5 +1,19 @@
 import React from "react";
 import { GraduationCap, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
 
 const Profile = () => {
   return (
@@ -12,23 +26,47 @@ const Profile = () => {
       <div className="absolute bottom-0 -right-20 w-[400px] h-[400px] rounded-full bg-brand-lightbg/10 animate-pulse-slower blur-2xl z-0"></div>
 
       {/* Section Title */}
-      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center">
+      <motion.h2
+        className="text-4xl md:text-5xl font-bold mb-10 text-center"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         The Developer
-      </h2>
+      </motion.h2>
 
       {/* Centered Image + Info */}
-      <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left gap-10">
+      <motion.div
+        className="flex flex-col md:flex-row justify-center items-center text-center md:text-left gap-10"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        custom={1}
+      >
         {/* Profile Image */}
-        <div className="rounded-full overflow-hidden border-4 border-white/20 shadow-lg w-40 sm:w-48 md:w-56 lg:w-60 aspect-square">
+        <motion.div
+          className="rounded-full overflow-hidden border-4 border-white/20 shadow-lg w-40 sm:w-48 md:w-56 lg:w-60 aspect-square"
+          whileHover={{ scale: 1.05 }}
+        >
           <img
             src="/profilepic.png"
             alt="Profile"
+            loading="lazy"
             className="w-full h-full object-cover"
           />
-        </div>
+        </motion.div>
 
         {/* Text Info */}
-        <div className="max-w-xl">
+        <motion.div
+          className="max-w-xl"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={2}
+        >
           <h1 className="text-3xl sm:text-4xl font-bold mb-2">
             Hi, I'm Fritz Adrian Yu
           </h1>
@@ -58,11 +96,18 @@ const Profile = () => {
           >
             Download Resume
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Tools Section */}
-      <div className="mt-16 text-center max-w-5xl mx-auto">
+      <motion.div
+        className="mt-16 text-center max-w-5xl mx-auto"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        custom={3}
+      >
         <h3 className="text-2xl font-semibold mb-12">Tools</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left px-4 sm:px-10 md:px-0">
@@ -73,7 +118,7 @@ const Profile = () => {
               {[
                 { src: "logo192.png", name: "React" },
                 { src: "/nextlogo.webp", name: "Next.js" },
-                { src: "/tailwindlogo.png", name: "Tailwind CSS", height: 5 },
+                { src: "/tailwindlogo.png", name: "Tailwind CSS", height: "h-6" },
                 { src: "/jslogo.png", name: "JavaScript" },
                 { src: "/htmllogo.png", name: "HTML" },
                 { src: "/csslogo.png", name: "CSS" },
@@ -83,7 +128,8 @@ const Profile = () => {
                   <img
                     src={src}
                     alt={name}
-                    className={`h-${height || 10} w-auto`}
+                    loading="lazy"
+                    className={`${height || "h-10"} w-auto`}
                   />
                   <span className="text-base">{name}</span>
                 </div>
@@ -108,7 +154,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

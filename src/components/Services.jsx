@@ -1,5 +1,6 @@
 import React from "react";
 import { Globe, Figma, PenTool } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -28,6 +29,19 @@ const services = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
+
 const Services = () => {
   return (
     <section
@@ -43,16 +57,24 @@ const Services = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, index) => (
-          <div
-            key={index}
-            className="bg-brand-dark rounded-2xl p-6 text-center shadow-md backdrop-blur-md transition hover:shadow-xl hover:-translate-y-2 duration-300"
-          >
+          <motion.div
+  key={index}
+  className="bg-brand-dark rounded-2xl p-6 text-center shadow-md backdrop-blur-md"
+  variants={cardVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  custom={index}
+  whileHover={{ scale: 1.03 }} // <-- Slight zoom on hover
+  transition={{ type: "spring", stiffness: 300, damping: 20 }} // smooth transition
+>
+
             <div className="flex justify-center mb-6 lg:mt-5">{service.icon}</div>
             <h3 className="text-3xl font-semibold mb-4">{service.title}</h3>
             <p className="text-sm md:text-base text-brand-lightbg/70 px-2 md:px-6 lg:mb-5">
               {service.description}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
