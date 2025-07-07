@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { Mail,Phone,MapPin} from "lucide-react";
+import { Facebook, Linkedin, Github } from 'lucide-react';
 
 // Triangle config
 const triangles = [
@@ -68,64 +70,48 @@ const generateKeyframes = () => {
     .join("\n");
 };
 
+
+
 const Hero = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+const [formSuccess, setFormSuccess] = useState(false);
+const [isSubmitting, setIsSubmitting] = useState(false);
+
+const handleChange = (e) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  try {
+    const response = await fetch('https://formspree.io/f/mwpbjzrv', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+    if (response.ok) {
+      setFormSuccess(true);
+      setFormData({ name: '', email: '', message: '' });
+    } else {
+      alert('Something went wrong. Please try again later.');
+    }
+  } catch (error) {
+    alert('Network error. Please check your connection.');
+  }
+  setIsSubmitting(false);
+};
+
+
   return (
     <section
       id="home"
       className="bg-brand-darktop text-brand-lightbg min-h-screen flex items-center justify-center px-4 md:px-6 relative overflow-hidden"
     >
-      {/* Content */}
-      <div className="text-center max-w-xl md:max-w-2xl animate-fade-in z-10">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
-          Hi, I'm Fritz<span className="text-brand-accent"> Yu</span>
-        </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-brand-lightbg mb-6 relative inline-block border-r-4 border-brand-lightbg animate-typewriter w-full max-w-xs sm:max-w-md md:max-w-2xl">
-  <span className="font-semibold">Design</span> and{" "}
-  <span className="font-semibold">Develop</span> the interface your users deserve.
-</p>
-
-        <div>
-          <a
-            href="#contact"
-            className="text-base md:text-lg inline-block bg-brand-accent hover:bg-brand-red text-white px-6 py-3 rounded-md font-semibold transition duration-300"
-          >
-            Contact Me
-          </a>
-        </div>
-
-        {/* Typewriter animation styles */}
-   <style jsx>{`
-  @keyframes typewriter {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 100%;
-    }
-  }
-  @keyframes blink {
-    50% {
-      border-color: transparent;
-    }
-  }
-  .animate-typewriter {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typewriter 3s steps(30, end) 1s 1 normal both,
-               blink 0.8s step-end infinite;
-  }
-
-  @media (max-width: 640px) {
-    .animate-typewriter {
-      font-size: 1rem;
-      max-width: 90vw;
-    }
-  }
-`}</style>
-      </div>
-
       {/* Animated Triangles */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none z-0">
         {triangles.map(({ size, stroke, opacity, duration, delay }, i) => (
           <svg
             key={i}
@@ -156,6 +142,213 @@ const Hero = () => {
           </svg>
         ))}
       </div>
+
+      {/* Content */}
+      <div className="text-center max-w-xl md:max-w-2xl animate-fade-in z-10">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
+          Hi, I'm Fritz<span className="text-brand-accent"> Yu</span>
+        </h1>
+        <p className="text-lg sm:text-xl md:text-2xl text-brand-lightbg mb-6 relative inline-block border-r-4 border-brand-lightbg animate-typewriter w-full max-w-xs sm:max-w-md md:max-w-2xl">
+          <span className="font-semibold">Design</span> and{" "}
+          <span className="font-semibold">Develop</span> the interface your users deserve.
+        </p>
+
+        <div>
+          <button
+            onClick={() => setShowModal(true)}
+            className="text-base md:text-lg inline-block bg-brand-accent hover:bg-brand-red text-white px-6 py-3 rounded-md font-semibold transition duration-300"
+          >
+            Contact Me
+          </button>
+        </div>
+      </div>
+{/* Modal */}
+{showModal && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+    <div className="relative p-8 rounded-lg max-w-xl w-full shadow-lg bg-brand-darktop z-10 overflow-hidden">
+      {/* Blob Backgrounds */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-white opacity-10 blur-3xl animate-blob z-0 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-white opacity-10 blur-3xl animate-blob animation-delay-2000 z-0 pointer-events-none" />
+
+      {/* Close Button */}
+      <button
+        onClick={() => setShowModal(false)}
+        className="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-2xl font-bold z-10"
+      >
+        &times;
+      </button>
+
+      {/* Modal Content */}
+      <div className="relative z-10">
+        <h2 className="text-2xl font-semibold mb-6 text-brand-lightbg text-center">Contact Information</h2>
+
+        {/* Image & Info */}
+        <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
+          <div className="flex-shrink-0">
+            <img src="/profilepicnobg.png" alt="Profile" className="w-28 h-28 rounded-full object-cover transform scale-110 shadow-lg" />
+          </div>
+          <div className="text-left">
+            <div className="mb-4 flex items-center text-brand-lightbg">
+              <Mail className="w-5 h-5 mr-3" />
+              <span className="text-gray-300">fritzyu.business@gmail.com</span>
+            </div>
+            <div className="mb-4 flex items-center text-brand-lightbg">
+              <Phone className="w-5 h-5 mr-3" />
+              <span className="text-gray-300">0999-563-9461</span>
+            </div>
+            <div className="flex items-center text-brand-lightbg">
+              <MapPin className="w-5 h-5 mr-3" />
+              <span className="text-gray-300">Quezon City, Philippines</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Form */}
+
+        {/* Social Media Icons */}
+<div className="flex justify-center gap-8 mt-4">
+  
+  <a
+    href="https://www.linkedin.com/in/fy0911/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-300 hover:text-white transition-transform transform hover:scale-125 duration-100"
+    aria-label="LinkedIn"
+  >
+    <Linkedin className="w-6 h-6" />
+  </a>
+  
+  <a
+    href="https://github.com/lemonjuice-ee"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-300 hover:text-white transition-transform transform hover:scale-125 duration-100"
+    aria-label="GitHub"
+  >
+    <Github className="w-6 h-6" />
+  </a>
+
+  <a
+    href="https://www.facebook.com/lemonju11ce/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-300 hover:text-white transition-transform transform hover:scale-125 duration-100"
+    aria-label="Facebook"
+  >
+    <Facebook className="w-6 h-6" />
+  </a>
+</div>
+ 
+
+        <div className="text-brand-lightbg text-center mb-3 mt-5">
+              <span className="text-gray-100 text-lg">Send a Message</span>
+            </div>
+        {!formSuccess ? (
+<form onSubmit={handleSubmit} className="space-y-4">
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+    className="w-full px-4 py-2 rounded-lg bg-brand-dark text-white"
+    value={formData.name}
+    onChange={handleChange}
+  />
+  <input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    required
+    className="w-full px-4 py-2 rounded-lg bg-brand-dark text-white"
+    value={formData.email}
+    onChange={handleChange}
+  />
+  <textarea
+    name="message"
+    placeholder="Your Message"
+    required
+    rows="4"
+    className="w-full px-4 py-2 rounded-lg bg-brand-dark text-white"
+    value={formData.message}
+    onChange={handleChange}
+  />
+
+  {/* Button aligned to the right */}
+  <div className="flex justify-end">
+    <button
+      type="submit"
+      className="bg-black text-white border border-gray-600 px-6 py-2 rounded hover:bg-gray-600 hover:text-white transition duration-200"
+      disabled={isSubmitting}
+    >
+      {isSubmitting ? 'Sending...' : 'Send Message'}
+    </button>
+  </div>
+</form>
+        ) : (
+          <div className="text-green-400 font-medium text-center mt-4">
+            Thank you! Your message has been sent. 💌
+          </div>
+        )}
+      </div>
+    </div>
+
+    {/* Blob Animations */}
+    <style jsx>{`
+      @keyframes blob {
+        0%, 100% {
+          transform: translate(0px, 0px) scale(1);
+          border-radius: 50%;
+        }
+        33% {
+          transform: translate(20px, -10px) scale(1.1);
+          border-radius: 60% 40% 30% 70%;
+        }
+        66% {
+          transform: translate(-15px, 20px) scale(0.95);
+          border-radius: 40% 60% 70% 30%;
+        }
+      }
+      .animate-blob {
+        animation: blob 8s infinite ease-in-out;
+      }
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+    `}</style>
+  </div>
+)}
+
+
+
+
+      {/* Typewriter animation styles */}
+      <style jsx>{`
+        @keyframes typewriter {
+          0% {
+            width: 0;
+          }
+          100% {
+            width: 100%;
+          }
+        }
+        @keyframes blink {
+          50% {
+            border-color: transparent;
+          }
+        }
+        .animate-typewriter {
+          white-space: nowrap;
+          overflow: hidden;
+          animation: typewriter 3s steps(30, end) 1s 1 normal both,
+                     blink 0.8s step-end infinite;
+        }
+        @media (max-width: 640px) {
+          .animate-typewriter {
+            font-size: 1rem;
+            max-width: 90vw;
+          }
+        }
+      `}</style>
 
       {/* Triangle keyframes */}
       <style jsx>{generateKeyframes()}</style>
