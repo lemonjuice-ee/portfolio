@@ -21,6 +21,27 @@ const projects = [
       "Responsive layout, animated sections, and modern UI built using reusable components.",
     showcaseImages: ["/showcase/portfolio-1.png", "/showcase/portfolio-2.png"],
   },
+
+    {
+    title: "Sales Management System",
+    image: "/esmockd.png",
+    description:
+      "A sales management application for a local seafood supplier business. Includes theme toggle, CRUD function, sales and profit, live charts and graphs.",
+    link: "",
+    logo: "/eslogo.png",
+    tags: ["NextJS", "Tailwind CSS", "Prisma", "TypeScript"],
+    extra: "Built for Etts Seafood.",
+    showcaseImages: [
+      "/showcase/es-1.png",
+      "/showcase/es-2.png",
+      "/showcase/es-3.png",
+      "/showcase/es-4.png",
+      "/showcase/es-5.png",
+      "/showcase/es-6.png",
+      "/showcase/es-7.png",
+      "/showcase/es-8.png",
+    ],
+  },
   {
     title: "Enrollment Management System",
     image: "/mtcmock.png",
@@ -81,7 +102,7 @@ const otherProjects = [
     desc: "UI design for a coffee shop kiosk.",
   },
   {
-    images: ["/other/other-3.png", "/other/other-1.png", "/other/other-2.png"],
+    images: ["/other/other-3.png","/other/other-4.png", "/other/other-5.png","/other/other-1.png", "/other/other-2.png"],
     title: "Other designs",
     desc: "Graphic design for advertisements, promotions and etc.",
   },
@@ -115,6 +136,7 @@ const Projects = () => {
       )
     );
   };
+  
 
   return (
     <section
@@ -170,15 +192,20 @@ const Projects = () => {
                   )}
                 </div>
 
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-bold text-sm sm:text-base text-brand-accent mb-4"
-                >
-                  VISIT WEBSITE <ArrowUpRight strokeWidth={3} />
-                </a>
-
+{project.title === "Sales Management System" ? (
+  <span className="inline-flex items-center gap-2 font-bold text-sm sm:text-base text-gray-400 mb-4">
+    Website is for private use
+  </span>
+) : (
+  <a
+    href={project.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 font-bold text-sm sm:text-base text-brand-accent mb-4"
+  >
+    VISIT WEBSITE <ArrowUpRight strokeWidth={3} />
+  </a>
+)}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
                     <span

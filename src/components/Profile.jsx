@@ -123,6 +123,8 @@ const Profile = () => {
                 { src: "/htmllogo.png", name: "HTML" },
                 { src: "/csslogo.png", name: "CSS" },
                 { src: "/strapilogo.png", name: "Strapi" },
+                { src: "/tslogo.png", name: "TypeScript" },
+                { src: "/prismalogo.png", name: "Prisma" },
               ].map(({ src, name, height }) => (
                 <div key={name} className="flex items-center gap-2">
                   <img
