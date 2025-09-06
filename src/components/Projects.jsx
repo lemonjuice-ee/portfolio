@@ -23,13 +23,13 @@ const projects = [
   },
 
     {
-    title: "Sales Management System",
+    title: "Sales Monitoring Application",
     image: "/esmockd.png",
     description:
-      "A sales management application for a local seafood supplier business. Includes theme toggle, CRUD function, sales and profit, live charts and graphs.",
+      "A sales monitoring application for a local seafood supplier business. Includes theme toggle, CRUD function, sales and profit, live charts and graphs.",
     link: "",
     logo: "/eslogo.png",
-    tags: ["NextJS", "Tailwind CSS", "Prisma", "TypeScript"],
+    tags: ["Next.js", "Tailwind CSS", "Prisma", "TypeScript"],
     extra: "Built for Etts Seafood.",
     showcaseImages: [
       "/showcase/es-1.png",
@@ -49,7 +49,7 @@ const projects = [
       "A responsive web app for a TESDA-accredited training center. Includes course enrollment, student registration, and admin dashboard.",
     link: "https://mtc-ph.vercel.app",
     logo: "/mtclogo.png",
-    tags: ["NextJS", "Tailwind CSS", "Strapi"],
+    tags: ["Next.js", "Tailwind CSS", "Strapi"],
     extra: "Built for Mechatronics Technologies Corporation.",
     showcaseImages: [
       "/showcase/mtc-1.png",
@@ -69,7 +69,7 @@ const projects = [
       "An e-commerce platform for product listings, cart system, checkout process and full order management functions. It comes with a driver side application for updating order status.",
     link: "https://rsc-online.vercel.app",
     logo: "/rsclogo.png",
-    tags: ["NextJS", "Tailwind CSS", "PostgreSQL", "ShadCN"],
+    tags: ["Next.js", "Tailwind CSS", "PostgreSQL", "ShadCN"],
     extra: "Built for Rhodesian Sales Corporation.",
     showcaseImages: [
       "/showcase/rsc-1.png",
