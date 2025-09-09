@@ -103,8 +103,13 @@ const otherProjects = [
   },
   {
     images: ["/other/other-3.png","/other/other-4.png", "/other/other-5.png","/other/other-1.png", "/other/other-2.png"],
-    title: "Other designs",
+    title: "Marketing Materials",
     desc: "Graphic design for advertisements, promotions and etc.",
+  },
+    {
+    images: ["/other/poster-1.png",],
+    title: "Other designs",
+    desc: "Graphic designs made during spare time.",
   },
 ];
 
@@ -304,13 +309,14 @@ className={`rounded-lg border border-white/10 shadow ${
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="bg-white/5 p-4 rounded-xl shadow-md flex flex-col items-start gap-3 relative"
             >
-              <div className="relative w-full aspect-[3/2] overflow-hidden rounded-lg border border-white/10">
-                <img
-                  src={item.images[imageIndices[idx]]}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
+              <div className="relative w-full aspect-[5/5] overflow-hidden rounded-lg border border-white/10">
+        <img
+  src={item.images[imageIndices[idx]]}
+  alt={item.title}
+  className="w-full h-full object-contain"
+  loading="lazy"
+/>
+
                 {item.images.length > 1 && (
                   <div className="absolute top-1/2 left-0 right-0 flex justify-between px-2 -translate-y-1/2">
                     <button
