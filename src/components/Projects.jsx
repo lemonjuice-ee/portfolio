@@ -107,7 +107,7 @@ const otherProjects = [
     desc: "Graphic design for advertisements, promotions and etc.",
   },
     {
-    images: ["/other/poster-1.png",],
+    images: ["/other/poster-1.png","/other/poster-2.png",],
     title: "Other designs",
     desc: "Graphic designs made during spare time.",
   },
@@ -197,7 +197,7 @@ const Projects = () => {
                   )}
                 </div>
 
-{project.title === "Sales Management System" ? (
+{project.title === "Sales Monitoring Application" ? (
   <span className="inline-flex items-center gap-2 font-bold text-sm sm:text-base text-gray-400 mb-4">
     Website is for private use
   </span>
