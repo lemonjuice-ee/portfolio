@@ -7,7 +7,7 @@ module.exports = {
       colors: {
         brand: {
           red: "#ee0000",       // Primary red
-          darktop: "#000000",   // Deep black/gray
+          darktop: "#050505",   // Deep black/gray
           lightbg: "#f8f8f8",   // Soft white bg
           accent: "#cc0000",    // Accent red (buttons/hover)
           dark: "#111111", 

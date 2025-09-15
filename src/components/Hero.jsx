@@ -153,14 +153,21 @@ const handleSubmit = async (e) => {
           <span className="font-semibold">Develop</span> the interface your users deserve.
         </p>
 
-        <div>
-          <button
-            onClick={() => setShowModal(true)}
-            className="text-base md:text-lg inline-block bg-brand-accent hover:bg-brand-red text-white px-6 py-3 rounded-md font-semibold transition duration-300"
-          >
-            Contact Me
-          </button>
-        </div>
+       <div className="flex gap-4 justify-center">
+  <button
+    onClick={() => setShowModal(true)}
+    className="text-base md:text-lg inline-block bg-transparent border-4 border-white hover:border-brand-red hover:text-brand-accent px-6 py-3 rounded-md font-semibold transition duration-300"
+  >
+    Contact Me
+  </button>
+<button
+  onClick={() => document.getElementById("projects").scrollIntoView({ behavior: "smooth" })}
+  className="text-base md:text-lg inline-block bg-transparent border-4 border-white hover:border-brand-red hover:text-brand-accent px-6 py-3 rounded-md font-semibold transition duration-300"
+>
+  View Works
+</button>
+</div>
+
       </div>
 {/* Modal */}
 {showModal && (

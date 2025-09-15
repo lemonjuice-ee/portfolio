@@ -92,15 +92,16 @@ const otherProjects = [
     desc: "A clean and modern UI design for a shoe brand.",
   },
   {
-    images: ["/other/logo-1.png", "/other/logo-2.png"],
-    title: "Brand Logo Design",
-    desc: "Logos for different brands.",
-  },
-  {
     images: ["/other/coffee-1.png", "/other/coffee-2.png"],
     title: "Kiosk UI Mockup",
     desc: "UI design for a coffee shop kiosk.",
   },
+  {
+    images: ["/other/logo-1.png", "/other/logo-2.png"],
+    title: "Brand Logo Design",
+    desc: "Logos for different brands.",
+  },
+  
   {
     images: ["/other/other-3.png","/other/other-4.png", "/other/other-5.png","/other/other-1.png", "/other/other-2.png"],
     title: "Marketing Materials",
@@ -108,7 +109,7 @@ const otherProjects = [
   },
     {
     images: ["/other/poster-1.png","/other/poster-2.png",],
-    title: "Other designs",
+    title: "Sports Posters",
     desc: "Graphic designs made during spare time.",
   },
 ];
@@ -160,7 +161,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="rounded-xl overflow-hidden shadow-lg min-h-[400px] flex flex-col md:flex-row"
+              className="rounded-xl overflow-hidden min-h-[400px] flex flex-col md:flex-row bg-black pt-12 pb-10 pr-10"
             >
               {/* IMAGE */}
               <a
@@ -173,7 +174,7 @@ const Projects = () => {
                   src={project.image}
                   alt={project.title}
                   loading="lazy"
-                  className="w-full max-h-[500px] object-cover rounded-xl shadow-md"
+                  className="w-full max-h-[500px] object-cover rounded-xl"
                 />
               </a>
 
@@ -192,7 +193,7 @@ const Projects = () => {
                     <img
                       src={project.logo}
                       alt={`${project.title} Logo`}
-                      className="w-16 h-16 sm:w-20 sm:h-20 object-contain bg-white rounded-full p-2 shadow-md"
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-full p-2 shadow-md"
                     />
                   )}
                 </div>
@@ -290,7 +291,7 @@ className={`rounded-lg border border-white/10 shadow ${
             </motion.div>
 
             {index !== projects.length - 1 && (
-              <div className="border-t border-white/30 w-full mt-10" />
+              <div className="border-t border-white/30 w-full mt-5 mb-5" />
             )}
           </Fragment>
         ))}
@@ -307,13 +308,13 @@ className={`rounded-lg border border-white/10 shadow ${
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-white/5 p-4 rounded-xl shadow-md flex flex-col items-start gap-3 relative"
+              className="bg-black p-4 rounded-xl shadow-md flex flex-col items-start gap-3 relative"
             >
-              <div className="relative w-full aspect-[5/5] overflow-hidden rounded-lg border border-white/10">
-        <img
+              <div className="relative w-full aspect-[5/5] overflow-hidden rounded-lg">
+     <img
   src={item.images[imageIndices[idx]]}
   alt={item.title}
-  className="w-full h-full object-contain"
+  className="w-full h-full object-contain rounded-lg"
   loading="lazy"
 />
 
