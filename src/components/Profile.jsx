@@ -157,6 +157,15 @@ const Profile = () => {
           </div>
         </div>
       </motion.div>
+      <motion.h2
+        className="text-md md:text-md text-center mt-10"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        Made using Reactjs
+      </motion.h2>
     </section>
   );
 };

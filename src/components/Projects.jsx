@@ -8,20 +8,9 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+
 // MAIN PROJECTS DATA
 const projects = [
-  {
-    title: "Portfolio Website",
-    image: "/portfoliomock.png",
-    description:
-      "A fully responsive personal portfolio built with React and Tailwind CSS to showcase my design and development work.",
-    link: "#",
-    tags: ["React", "Tailwind CSS", "Lucide"],
-    extra:
-      "Responsive layout, animated sections, and modern UI built using reusable components.",
-    showcaseImages: ["/showcase/portfolio-1.png", "/showcase/portfolio-2.png"],
-  },
-
     {
     title: "Sales Monitoring Application",
     image: "/esmockd.png",
@@ -87,11 +76,6 @@ const projects = [
 // OTHER PROJECTS DATA (multiple images support)
 const otherProjects = [
   {
-    images: ["/other/graphic-2.png", "/other/graphic-1.png"],
-    title: "Mobile UI Mockup",
-    desc: "A clean and modern UI design for a shoe brand.",
-  },
-  {
     images: ["/other/coffee-1.png", "/other/coffee-2.png"],
     title: "Kiosk UI Mockup",
     desc: "UI design for a coffee shop kiosk.",
@@ -106,11 +90,6 @@ const otherProjects = [
     images: ["/other/other-3.png","/other/other-4.png", "/other/other-5.png","/other/other-1.png", "/other/other-2.png"],
     title: "Marketing Materials",
     desc: "Graphic design for advertisements, promotions and etc.",
-  },
-    {
-    images: ["/other/poster-1.png","/other/poster-2.png",],
-    title: "Sports Posters",
-    desc: "Graphic designs made during spare time.",
   },
 ];
 
@@ -298,8 +277,108 @@ className={`rounded-lg border border-white/10 shadow ${
       </div>
 
       {/* OTHER PROJECTS SECTION */}
+
+              {/* FIGMA DESIGNS SECTION */}
+      <section className="mt-24 mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12">Figma Designs</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
+          {[
+            {
+              title: "Webpage UI",
+              image: "/other/figma-1.png",
+              desc: "A webpage for a local coffee shop.",
+              link: "https://www.figma.com/proto/gsuWyHQ5NRUtop3PWMRJY4/Sunset-Coffee?page-id=0%3A1&node-id=2-2&p=f&viewport=172%2C178%2C1.12&t=SwpRXOAxf5BtrVbu-1&scaling=scale-down&content-scaling=fixed",
+            },
+            {
+              title: "Sports Team Website UI",
+              image: "/other/figma-2.png",
+              desc: "Fanmade website design for The Golden State Warriors.",
+              link: "https://www.figma.com/proto/e7YXmSrSKpASxSihUYaXVi/Warriors?page-id=0%3A1&node-id=1-2&p=f&viewport=1736%2C1791%2C0.73&t=UYHl5Vqgl7XqOOmH-1&scaling=scale-down&content-scaling=fixed",
+            },
+            {
+              title: "Mobile App UI",
+              image: "/other/figma-3.png",
+              desc: "Design for a shoe brand online shopping app.",
+              link: "https://www.figma.com/proto/3uLLSIGjozZNPwJTQE6mzW/Untitled?page-id=0%3A1&node-id=1-10&p=f&viewport=839%2C711%2C0.5&t=6ZJyCm1RrfJNrxQM-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A10",
+            },
+          ].map((design, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="bg-black rounded-xl overflow-hidden shadow-lg group"
+            >
+              <div className="relative w-full aspect-[16/9] overflow-hidden">
+                <img
+                  src={design.image}
+                  alt={design.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4 flex flex-col gap-2">
+                <h4 className="text-lg font-semibold">{design.title}</h4>
+                <p className="text-sm text-brand-lightbg/70">{design.desc}</p>
+                {design.link && (
+                  <a
+                    href={design.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-brand-accent text-sm font-semibold hover:underline"
+                  >
+                    View in Figma <ArrowUpRight size={16} />
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+      </section>
+       {/* CONTINUOUS SCROLLING IMAGE STRIP */}
       <section className="mt-24">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">Other Projects</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-12">
+          Posters
+        </h2>
+
+        <div className="relative w-full overflow-hidden">
+          <motion.div
+            className="flex gap-6 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              duration: 40, // adjust speed here
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {[ 
+              "/other/poster-1.png",
+              "/other/poster-2.png",
+              "/other/poster-3.png",
+            ].concat([
+              "/other/poster-1.png",
+              "/other/poster-2.png",
+              "/other/poster-3.png",
+            ]) 
+              .map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                alt={`Scrolling Showcase ${i + 1}`}
+                className="h-[800px] w-auto rounded-lg shadow border border-white/10 object-contain"
+                loading="lazy"
+              />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+<section className="mt-24">
+  <h2 className="text-3xl md:text-4xl font-bold mb-12">
+          Other Designs
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {otherProjects.map((item, idx) => (
             <motion.div
@@ -340,9 +419,9 @@ className={`rounded-lg border border-white/10 shadow ${
               <p className="text-sm text-brand-lightbg/70">{item.desc}</p>
             </motion.div>
           ))}
-        </div>
-      </section>
-    </section>
+        </div></section>
+      
+        </section>
   );
 };
 
