@@ -164,7 +164,7 @@ const Profile = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        Made using Reactjs
+        Made using React
       </motion.h2>
     </section>
   );
