@@ -349,7 +349,7 @@ className={`rounded-lg border border-white/10 shadow ${
             className="flex gap-6 w-max"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
-              duration: 40, // adjust speed here
+              duration: 80, // adjust speed here
               repeat: Infinity,
               ease: "linear",
             }}
@@ -372,7 +372,42 @@ className={`rounded-lg border border-white/10 shadow ${
                 key={i}
                 src={img}
                 alt={`Scrolling Showcase ${i + 1}`}
-                className="h-[800px] w-auto rounded-lg shadow border border-white/10 object-contain"
+                className="h-[600px] w-auto rounded-lg shadow border border-white/10 object-contain"
+                loading="lazy"
+              />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+      {/* CONTINUOUS SCROLLING IMAGE STRIP */}
+      <section className="mt-10">
+        <div className="relative w-full overflow-hidden">
+          <motion.div
+            className="flex gap-6 w-max"
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{
+              duration: 80, // adjust speed here
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {[ 
+              "/other/poster-6.png",
+              "/other/poster-7.png",
+              "/other/poster-8.png",
+              "/other/poster-9.png",
+            ].concat([
+              "/other/poster-6.png",
+              "/other/poster-7.png",
+              "/other/poster-8.png",
+              "/other/poster-9.png",
+            ]) 
+              .map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                alt={`Scrolling Showcase ${i + 1}`}
+                className="h-[600px] w-auto rounded-lg shadow border border-white/10 object-contain"
                 loading="lazy"
               />
             ))}
