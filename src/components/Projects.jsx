@@ -13,16 +13,16 @@ import { motion, AnimatePresence } from "framer-motion";
 const projects = [
     {
     title: "Sales Monitoring Application",
-    image: "/esmockd.png",
+    image: "/esmockup.png",
     description:
-      "A sales monitoring application for a local seafood supplier business. Includes theme toggle, CRUD function, sales and profit, live charts and graphs.",
-    link: "",
+      "A sales monitoring application for a local seafood supplier business. Includes theme toggle, CRUD function, sales and profit, live charts and graphs for business analytics.",
+    link: "https://one-ocean.vercel.app",
     logo: "/eslogo.png",
     tags: ["Next.js", "Tailwind CSS", "Prisma", "TypeScript"],
-    extra: "Built for Etts Seafood.",
+    extra: "Built for Etts Seafood. (This Version is a clone only)",
     showcaseImages: [
-      "/showcase/es-1.png",
       "/showcase/es-2.png",
+      "/showcase/es-1.png",
       "/showcase/es-3.png",
       "/showcase/es-4.png",
       "/showcase/es-5.png",
@@ -176,12 +176,6 @@ const Projects = () => {
                     />
                   )}
                 </div>
-
-{project.title === "Sales Monitoring Application" ? (
-  <span className="inline-flex items-center gap-2 font-bold text-sm sm:text-base text-gray-400 mb-4">
-    Website is for private use
-  </span>
-) : (
   <a
     href={project.link}
     target="_blank"
@@ -190,7 +184,6 @@ const Projects = () => {
   >
     VISIT WEBSITE <ArrowUpRight strokeWidth={3} />
   </a>
-)}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
                     <span
@@ -396,11 +389,13 @@ className={`rounded-lg border border-white/10 shadow ${
               "/other/poster-7.png",
               "/other/poster-8.png",
               "/other/poster-9.png",
+              "/other/poster-10.png",
             ].concat([
               "/other/poster-6.png",
               "/other/poster-7.png",
               "/other/poster-8.png",
               "/other/poster-9.png",
+              "/other/poster-10.png",
             ]) 
               .map((img, i) => (
               <img
