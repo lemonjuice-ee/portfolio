@@ -60,6 +60,37 @@ const Header = () => {
             >
               Let’s Talk!
             </button>
+
+<div className="flex items-center justify-center md:justify-start gap-2">
+  {/* Instagram (still local or can use URL if needed) */}
+<a
+  href="https://www.instagram.com/lemonjuice.designs"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="p-2 hover:scale-110 transition-transform"
+>
+  <img
+    src="/instagram.png"
+    alt="Instagram"
+    className="h-8 w-8 invert"
+  />
+</a>
+
+
+  {/* TikTok Icon (from the web) */}
+  <a
+    href="https://www.tiktok.com/@lemonjuice.designs"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="p-2 hover:scale-110 transition-transform"
+  >
+    <img
+      src="https://icons.iconarchive.com/icons/simpleicons-team/simple/512/tiktok-icon.png"
+      alt="TikTok"
+      className="h-6 w-6 invert"
+    />
+  </a>
+</div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,6 +116,7 @@ const Header = () => {
                 Let’s Talk!
               </button>
             </nav>
+            
           </div>
         )}
       </header>

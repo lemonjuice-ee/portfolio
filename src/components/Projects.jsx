@@ -390,12 +390,16 @@ className={`rounded-lg border border-white/10 shadow ${
               "/other/poster-8.png",
               "/other/poster-9.png",
               "/other/poster-10.png",
+              "/other/poster-11.png",
+               "/other/poster-12.png",
             ].concat([
               "/other/poster-6.png",
               "/other/poster-7.png",
               "/other/poster-8.png",
               "/other/poster-9.png",
               "/other/poster-10.png",
+              "/other/poster-11.png",
+               "/other/poster-12.png",
             ]) 
               .map((img, i) => (
               <img

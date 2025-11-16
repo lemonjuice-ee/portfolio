@@ -89,13 +89,51 @@ const Profile = () => {
             <MapPin className="h-6 w-6 sm:h-8 sm:w-8 text-brand-lightbg" />
             Quezon City, Philippines
           </p>
-          <a
-            href="/Yu Resume 2025.pdf"
-            download
-            className="bg-white/10 text-sm text-brand-lightbg px-3 py-2 rounded-md border border-white/20 transition-shadow hover:shadow-[0_0_10px_rgba(255,255,255,0.6)]"
-          >
-            Download Resume
-          </a>
+{/* Resume + Social Buttons */}
+<div className="flex items-center justify-center md:justify-start gap-2 mt-4">
+
+  {/* Download Resume */}
+  <a
+    href="/Yu Resume 2025.pdf"
+    download
+    className="bg-white/10 text-sm text-brand-lightbg px-3 py-2 rounded-md border border-white/20 transition-shadow hover:shadow-[0_0_10px_rgba(255,255,255,0.6)] mr-1"
+  >
+    Download Resume
+  </a>
+
+
+  {/* Instagram (still local or can use URL if needed) */}
+<a
+  href="https://www.instagram.com/lemonjuice.designs"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="p-2 hover:scale-110 transition-transform"
+>
+  <img
+    src="/instagram.png"
+    alt="Instagram"
+    className="h-8 w-8 invert"
+  />
+</a>
+
+
+  {/* TikTok Icon (from the web) */}
+  <a
+    href="https://www.tiktok.com/@lemonjuice.designs"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="p-2 hover:scale-110 transition-transform"
+  >
+    <img
+      src="https://icons.iconarchive.com/icons/simpleicons-team/simple/512/tiktok-icon.png"
+      alt="TikTok"
+      className="h-6 w-6 invert"
+    />
+  </a>
+
+
+</div>
+
         </motion.div>
       </motion.div>
 
