@@ -73,6 +73,29 @@ const projects = [
   },
 ];
 
+const brandCaseStudies = [
+  {
+    brand: "Yappari Steak",
+    thumbnail: "/brands/YappariBrandBoard.png",
+    description:
+      "Yappari Steak delivers sizzling lava-plate steaks inspired by Japanese grilling traditions, served in a vibrant and modern setting.",
+    images: [
+      "/brands/YappariCarouselFull.png",
+
+    ],
+  },
+  {
+    brand: "Atua Midtown Cebu",
+    thumbnail: "/brands/AtuaBrandBoard.png",
+    description:
+      "ATÚA Midtown Cebu is a creative lifestyle destination where community, culture, and local brands come together in Midtown Cebu.",
+    images: [
+      "/brands/AtuaCarouselFull.png",
+    ],
+  },
+];
+
+
 // OTHER PROJECTS DATA (multiple images support)
 const otherProjects = [
   {
@@ -98,6 +121,8 @@ const Projects = () => {
   const [imageIndices, setImageIndices] = useState(
     otherProjects.map(() => 0)
   );
+  const [expandedBrand, setExpandedBrand] = useState(null);
+
 
   const toggleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -329,8 +354,95 @@ className={`rounded-lg border border-white/10 shadow ${
             </motion.div>
           ))}
         </div>
-
       </section>
+      
+<section className="mt-24">
+  <h2 className="text-3xl md:text-4xl font-bold mb-12">
+    Brand Case Studies
+  </h2>
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {brandCaseStudies.map((brand, idx) => (
+      <motion.div
+        key={idx}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+        className="bg-black rounded-xl p-6"
+      >
+        {/* THUMBNAIL / PREVIEW */}
+        <img
+          src={brand.thumbnail}
+          alt={brand.brand}
+          className="w-full rounded-lg mb-4 object-cover"
+          loading="lazy"
+        />
+
+        <div className="flex justify-between items-center">
+          <h3 className="text-xl font-semibold">{brand.brand}</h3>
+          <button
+            onClick={() =>
+              setExpandedBrand(expandedBrand === idx ? null : idx)
+            }
+            className="text-brand-accent flex items-center gap-1 font-semibold"
+          >
+            {expandedBrand === idx ? (
+              <>
+                Hide Details <ChevronUp size={16} />
+              </>
+            ) : (
+              <>
+                View Details <ChevronDown size={16} />
+              </>
+            )}
+          </button>
+        </div>
+
+        {/* COLLAPSIBLE CONTENT */}
+        <AnimatePresence>
+          {expandedBrand === idx && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="overflow-hidden mt-4"
+            >
+              <p className="text-sm text-brand-lightbg/70 mb-4">
+                {brand.description}
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
+                {brand.images.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    alt={`${brand.brand} showcase ${i + 1}`}
+                    className="rounded-lg border border-white/10 object-cover"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+
+              {brand.link && (
+                <a
+                  href={brand.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-4 text-brand-accent text-sm font-semibold hover:underline"
+                >
+                  View Full Brand <ArrowUpRight size={16} />
+                </a>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
        {/* CONTINUOUS SCROLLING IMAGE STRIP */}
       <section className="mt-24">
         <h2 className="text-3xl md:text-4xl font-bold mb-12">
