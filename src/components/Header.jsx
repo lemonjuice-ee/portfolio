@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Mail, Phone, MapPin, Facebook, Linkedin, Github } from 'lucide-react';
+import { Menu, X, Mail, Phone, MapPin, Facebook, Linkedin, Github, Home, Folder, Instagram, } from 'lucide-react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,56 +42,109 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-black shadow-md fixed top-0 left-0 w-full z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 flex justify-between items-center">
-          <h1 className="text-lg sm:text-xl font-bold text-brand-lightbg">
+      <header className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <div className="flex items-center gap-6 px-6 py-3 bg-black/70 backdrop-blur-xl rounded-full shadow-lg border border-white/10 ">
+          <h1 className="text-sm sm:text-base font-bold text-brand-lightbg whitespace-nowrap">
             &lt;fritz<span className="text-brand-red">.yu</span>&gt;
           </h1>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-6 text-brand-lightbg text-sm font-medium">
-            <nav className="flex gap-4 lg:gap-6">
-              <a href="#home" className="hover:text-brand-accent transition font-semibold">Home</a>
-              <a href="#projects" className="hover:text-brand-accent transition font-semibold">Projects</a>
-            </nav>
-            <button
-              onClick={() => setShowModal(true)}
-              className="ml-4 px-4 py-2 bg-brand-darktop border-white border-2 text-white rounded-xl hover:bg-brand-dark hover:text-brand-red hover:border-brand-red transition text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-accent"
-            >
-              Let’s Talk!
-            </button>
+<div className="hidden md:flex items-center gap-4 text-brand-lightbg text-sm font-medium">
+  {/* NAV ICONS */}
+<nav className="flex items-center gap-2">
 
-<div className="flex items-center justify-center md:justify-start gap-2">
-  {/* Instagram (still local or can use URL if needed) */}
-<a
-  href="https://www.instagram.com/lemonjuice.designs"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="p-2 hover:scale-110 transition-transform"
->
-  <img
-    src="/instagram.png"
-    alt="Instagram"
-    className="h-8 w-8 invert"
-  />
-</a>
-
-
-  {/* TikTok Icon (from the web) */}
-  <a
-    href="https://www.tiktok.com/@lemonjuice.designs"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-2 hover:scale-110 transition-transform"
+  {/* Scroll to top */}
+  <button
+    type="button"
+    onClick={(e) => {
+      e.preventDefault(); // Prevent any default jump
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }}
+    aria-label="Home"
+    className="relative group p-2 rounded-full hover:bg-white/10 transition"
   >
-    <img
-      src="https://icons.iconarchive.com/icons/simpleicons-team/simple/512/tiktok-icon.png"
-      alt="TikTok"
-      className="h-6 w-6 invert"
-    />
-  </a>
+    <Home className="w-6 h-6 text-brand-lightbg" strokeWidth={2.5} />
+
+    <span className="absolute -top-9 left-1/2 -translate-x-1/2 px-2 py-1 text-xs rounded-md bg-black/80 text-white backdrop-blur-md opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap">
+      Home
+    </span>
+  </button>
+
+  {/* Scroll to Projects section */}
+  <button
+    type="button"
+    onClick={(e) => {
+      e.preventDefault(); // Prevent default anchor behavior
+      const projects = document.getElementById('projects');
+      projects?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }}
+    aria-label="Projects"
+    className="relative group p-2 rounded-full hover:bg-white/10 transition"
+  >
+    <Folder className="w-6 h-6 text-brand-lightbg" strokeWidth={2.5} />
+
+    <span className="absolute -top-9 left-1/2 -translate-x-1/2 px-2 py-1 text-xs rounded-md bg-black/80 text-white backdrop-blur-md opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap">
+      Projects
+    </span>
+  </button>
+</nav>
+
+
+  {/* DIVIDER */}
+  <span className="h-5 w-px bg-white/20" />
+
+  {/* SOCIAL ICONS */}
+  <div className="flex items-center gap-2">
+    <a
+      href="https://www.instagram.com/lemonjuice.designs"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      className="relative group p-2 rounded-full hover:bg-white/10 hover:scale-110 transition-all"
+    >
+      <Instagram className="w-6 h-6 text-brand-lightbg" strokeWidth={2.5} />
+
+      <span className="absolute -top-9 left-1/2 -translate-x-1/2 px-2 py-1 text-xs rounded-md bg-black/80 text-white backdrop-blur-md opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap">
+        Instagram
+      </span>
+    </a>
+
+    <a
+      href="https://www.tiktok.com/@lemonjuice.designs"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="TikTok"
+      className="relative group p-2 rounded-full hover:bg-white/10 hover:scale-110 transition-all"
+    >
+      <img
+        src="https://icons.iconarchive.com/icons/simpleicons-team/simple/512/tiktok-icon.png"
+        alt=""
+        className="w-5 h-5 invert"
+      />
+
+      <span className="absolute -top-9 left-1/2 -translate-x-1/2 px-2 py-1 text-xs rounded-md bg-black/80 text-white backdrop-blur-md opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap">
+        TikTok
+      </span>
+    </a>
+  </div>
+
+  {/* DIVIDER */}
+  <span className="h-5 w-px bg-white/20" />
+
+  {/* CTA */}
+  <button
+    onClick={() => setShowModal(true)}
+    className="relative group px-4 py-2 text-xs font-semibold rounded-full bg-brand-darktop border border-white/30 hover:bg-brand-dark transition"
+  >
+    Let’s Talk!
+
+    <span className="absolute -top-9 left-1/2 -translate-x-1/2 px-2 py-1 text-xs rounded-md bg-black/80 text-white backdrop-blur-md opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap">
+      Contact
+    </span>
+  </button>
+
 </div>
-          </div>
+
 
           {/* Mobile Menu Button */}
           <button

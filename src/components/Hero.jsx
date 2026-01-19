@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Mail,Phone,MapPin} from "lucide-react";
 import { Facebook, Linkedin, Github } from 'lucide-react';
+import { Globe, Figma, PenTool } from "lucide-react";
 
 // Triangle config
 const triangles = [
@@ -106,9 +107,9 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <section
+<section
       id="home"
-      className="bg-brand-darktop text-brand-lightbg min-h-screen flex items-center justify-center px-4 md:px-6 relative overflow-hidden"
+      className="bg-brand-darktop text-brand-lightbg min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-10 relative overflow-hidden"
     >
       {/* Animated Triangles */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -144,217 +145,176 @@ const handleSubmit = async (e) => {
       </div>
 
       {/* Content */}
-      <div className="text-center max-w-xl md:max-w-2xl animate-fade-in z-10">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
-          Hi, I'm Fritz<span className="text-brand-accent"> Yu</span>
+      <div className="text-center max-w-full md:max-w-2xl animate-fade-in z-10">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+          Hi, I'm Fritz Yu
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-brand-lightbg mb-6 relative inline-block border-r-4 border-brand-lightbg animate-typewriter w-full max-w-xs sm:max-w-md md:max-w-2xl">
+
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-brand-lightbg mb-6 relative inline-block border-r-4 border-brand-lightbg animate-typewriter w-full max-w-xs sm:max-w-md md:max-w-2xl mx-auto">
           <span className="font-semibold">Design</span> and{" "}
           <span className="font-semibold">Develop</span> the interface your users deserve.
         </p>
 
-       <div className="flex gap-4 justify-center">
-  <button
-    onClick={() => setShowModal(true)}
-    className="text-base md:text-lg inline-block bg-transparent border-4 border-white hover:border-brand-red hover:text-brand-accent px-6 py-3 rounded-md font-semibold transition duration-300"
-  >
-    Contact Me
-  </button>
-<button
-  onClick={() => document.getElementById("projects").scrollIntoView({ behavior: "smooth" })}
-  className="text-base md:text-lg inline-block bg-transparent border-4 border-white hover:border-brand-red hover:text-brand-accent px-6 py-3 rounded-md font-semibold transition duration-300"
->
-  View Works
-</button>
-</div>
-
-      </div>
-{/* Modal */}
-{showModal && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-    <div className="relative p-8 rounded-lg max-w-xl w-full shadow-lg bg-brand-darktop z-10 overflow-hidden">
-      {/* Blob Backgrounds */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-white opacity-10 blur-3xl animate-blob z-0 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-white opacity-10 blur-3xl animate-blob animation-delay-2000 z-0 pointer-events-none" />
-
-      {/* Close Button */}
-      <button
-        onClick={() => setShowModal(false)}
-        className="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-2xl font-bold z-10"
-      >
-        &times;
-      </button>
-
-      {/* Modal Content */}
-      <div className="relative z-10">
-        <h2 className="text-2xl font-semibold mb-6 text-brand-lightbg text-center">Contact Information</h2>
-
-        {/* Image & Info */}
-        <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
-          <div className="flex-shrink-0">
-            <img src="/profilepicnobg.png" alt="Profile" className="w-28 h-28 rounded-full object-cover transform scale-110 shadow-lg" />
+        {/* Skill badges */}
+        <div className="flex flex-wrap gap-4 justify-center mb-8">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg">
+            <Globe className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+            Web Development
           </div>
-          <div className="text-left">
-            <div className="mb-4 flex items-center text-brand-lightbg">
-              <Mail className="w-5 h-5 mr-3" />
-              <span className="text-gray-300">fritzyu.business@gmail.com</span>
-            </div>
-            <div className="mb-4 flex items-center text-brand-lightbg">
-              <Phone className="w-5 h-5 mr-3" />
-              <span className="text-gray-300">0999-563-9461</span>
-            </div>
-            <div className="flex items-center text-brand-lightbg">
-              <MapPin className="w-5 h-5 mr-3" />
-              <span className="text-gray-300">Quezon City, Philippines</span>
-            </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg">
+            <Figma className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+            UI Design
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg">
+            <PenTool className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+            Graphic Design
           </div>
         </div>
 
-        {/* Contact Form */}
-
-        {/* Social Media Icons */}
-<div className="flex justify-center gap-8 mt-4">
-  
-  <a
-    href="https://www.linkedin.com/in/fy0911/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-gray-300 hover:text-white transition-transform transform hover:scale-125 duration-100"
-    aria-label="LinkedIn"
-  >
-    <Linkedin className="w-6 h-6" />
-  </a>
-  
-  <a
-    href="https://github.com/lemonjuice-ee"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-gray-300 hover:text-white transition-transform transform hover:scale-125 duration-100"
-    aria-label="GitHub"
-  >
-    <Github className="w-6 h-6" />
-  </a>
-
-  <a
-    href="https://www.facebook.com/lemonju11ce/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-gray-300 hover:text-white transition-transform transform hover:scale-125 duration-100"
-    aria-label="Facebook"
-  >
-    <Facebook className="w-6 h-6" />
-  </a>
-</div>
- 
-
-        <div className="text-brand-lightbg text-center mb-3 mt-5">
-              <span className="text-gray-100 text-lg">Send a Message</span>
-            </div>
-        {!formSuccess ? (
-<form onSubmit={handleSubmit} className="space-y-4">
-  <input
-    type="text"
-    name="name"
-    placeholder="Your Name"
-    required
-    className="w-full px-4 py-2 rounded-lg bg-brand-dark text-white"
-    value={formData.name}
-    onChange={handleChange}
-  />
-  <input
-    type="email"
-    name="email"
-    placeholder="Your Email"
-    required
-    className="w-full px-4 py-2 rounded-lg bg-brand-dark text-white"
-    value={formData.email}
-    onChange={handleChange}
-  />
-  <textarea
-    name="message"
-    placeholder="Your Message"
-    required
-    rows="4"
-    className="w-full px-4 py-2 rounded-lg bg-brand-dark text-white"
-    value={formData.message}
-    onChange={handleChange}
-  />
-
-  {/* Button aligned to the right */}
-  <div className="flex justify-end">
-    <button
-      type="submit"
-      className="bg-black text-white border border-gray-600 px-6 py-2 rounded hover:bg-gray-600 hover:text-white transition duration-200"
-      disabled={isSubmitting}
-    >
-      {isSubmitting ? 'Sending...' : 'Send Message'}
-    </button>
-  </div>
-</form>
-        ) : (
-          <div className="text-green-400 font-medium text-center mt-4">
-            Thank you! Your message has been sent. 💌
-          </div>
-        )}
+        {/* Action buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            onClick={() => setShowModal(true)}
+            className="px-6 py-3 text-sm sm:text-base font-semibold rounded-full bg-white/5 backdrop-blur-md border border-white/20 text-white hover:bg-white/10 hover:border-brand-red hover:text-brand-accent hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
+          >
+            Contact Me
+          </button>
+          <button
+            onClick={() => document.getElementById("projects").scrollIntoView({ behavior: "smooth" })}
+            className="px-6 py-3 text-sm sm:text-base font-semibold rounded-full bg-white/5 backdrop-blur-md border border-white/20 text-white hover:bg-white/10 hover:border-brand-red hover:text-brand-accent hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
+          >
+            View Works
+          </button>
+        </div>
       </div>
-    </div>
 
-    {/* Blob Animations */}
-    <style jsx>{`
-      @keyframes blob {
-        0%, 100% {
-          transform: translate(0px, 0px) scale(1);
-          border-radius: 50%;
-        }
-        33% {
-          transform: translate(20px, -10px) scale(1.1);
-          border-radius: 60% 40% 30% 70%;
-        }
-        66% {
-          transform: translate(-15px, 20px) scale(0.95);
-          border-radius: 40% 60% 70% 30%;
-        }
-      }
-      .animate-blob {
-        animation: blob 8s infinite ease-in-out;
-      }
-      .animation-delay-2000 {
-        animation-delay: 2s;
-      }
-    `}</style>
-  </div>
-)}
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 px-4">
+          <div className="relative p-6 sm:p-8 rounded-lg max-w-xl w-full shadow-lg bg-brand-darktop z-10 overflow-hidden">
+            {/* Blobs */}
+            <div className="absolute top-0 left-0 w-56 h-56 bg-white opacity-10 blur-3xl animate-blob z-0 pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-48 h-48 bg-white opacity-10 blur-3xl animate-blob animation-delay-2000 z-0 pointer-events-none" />
 
+            {/* Close */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-2xl font-bold z-10"
+            >
+              &times;
+            </button>
 
+            {/* Content */}
+            <div className="relative z-10">
+              <h2 className="text-2xl font-semibold mb-6 text-brand-lightbg text-center">
+                Contact Information
+              </h2>
 
+              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-6">
+                <div className="flex-shrink-0">
+                  <img
+                    src="/profilepicnobg.png"
+                    alt="Profile"
+                    className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover transform scale-110 shadow-lg"
+                  />
+                </div>
+                <div className="text-left space-y-2">
+                  <div className="flex items-center text-gray-300 gap-2">
+                    <Mail className="w-4 h-4 md:w-5 md:h-5" />
+                    fritzyu.business@gmail.com
+                  </div>
+                  <div className="flex items-center text-gray-300 gap-2">
+                    <Phone className="w-4 h-4 md:w-5 md:h-5" />
+                    0999-563-9461
+                  </div>
+                  <div className="flex items-center text-gray-300 gap-2">
+                    <MapPin className="w-4 h-4 md:w-5 md:h-5" />
+                    Quezon City, Philippines
+                  </div>
+                </div>
+              </div>
 
-      {/* Typewriter animation styles */}
+              {/* Social */}
+              <div className="flex justify-center gap-6 mb-4">
+                {[Linkedin, Github, Facebook].map((Icon, idx) => (
+                  <a
+                    key={idx}
+                    href={["https://www.linkedin.com/in/fy0911/", "https://github.com/lemonjuice-ee", "https://www.facebook.com/lemonju11ce/"][idx]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-white transition-transform transform hover:scale-125 duration-100"
+                  >
+                    <Icon className="w-5 h-5 md:w-6 md:h-6" />
+                  </a>
+                ))}
+              </div>
+
+              {/* Form */}
+              {!formSuccess ? (
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    className="w-full px-4 py-2 rounded-lg bg-brand-dark text-white"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+                    className="w-full px-4 py-2 rounded-lg bg-brand-dark text-white"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    rows="4"
+                    required
+                    className="w-full px-4 py-2 rounded-lg bg-brand-dark text-white"
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
+                  <div className="flex justify-end">
+                    <button
+                      type="submit"
+                      className="bg-black text-white border border-gray-600 px-4 sm:px-6 py-2 rounded hover:bg-gray-600 hover:text-white transition duration-200"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="text-green-400 font-medium text-center mt-4">
+                  Thank you! Your message has been sent. 💌
+                </div>
+              )}
+            </div>
+          </div>
+
+          <style jsx>{`
+            @keyframes blob {
+              0%,100% {transform: translate(0,0) scale(1); border-radius:50%;}
+              33% {transform: translate(20px,-10px) scale(1.1); border-radius:60% 40% 30% 70%;}
+              66% {transform: translate(-15px,20px) scale(0.95); border-radius:40% 60% 70% 30%;}
+            }
+            .animate-blob {animation: blob 8s infinite ease-in-out;}
+            .animation-delay-2000 {animation-delay: 2s;}
+          `}</style>
+        </div>
+      )}
+
+      {/* Typewriter */}
       <style jsx>{`
-        @keyframes typewriter {
-          0% {
-            width: 0;
-          }
-          100% {
-            width: 100%;
-          }
-        }
-        @keyframes blink {
-          50% {
-            border-color: transparent;
-          }
-        }
-        .animate-typewriter {
-          white-space: nowrap;
-          overflow: hidden;
-          animation: typewriter 3s steps(30, end) 1s 1 normal both,
-                     blink 0.8s step-end infinite;
-        }
-        @media (max-width: 640px) {
-          .animate-typewriter {
-            font-size: 1rem;
-            max-width: 90vw;
-          }
-        }
+        @keyframes typewriter {0% {width:0;} 100% {width:100%;}}
+        @keyframes blink {50% {border-color: transparent;}}
+        .animate-typewriter {white-space:nowrap; overflow:hidden; animation:typewriter 3s steps(30,end) 1s 1 normal both, blink 0.8s step-end infinite;}
+        @media (max-width: 640px) { .animate-typewriter {font-size:0.875rem; max-width:90vw;} }
       `}</style>
 
       {/* Triangle keyframes */}

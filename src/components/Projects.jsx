@@ -13,7 +13,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const projects = [
     {
     title: "Sales Monitoring Application",
-    image: "/esmockup.png",
+    gradient: 'linear-gradient(135deg, #004080, #00264d)',
+    image: "/etsmockup.png",
     description:
       "A sales monitoring application for a local seafood supplier business. Includes theme toggle, CRUD function, sales and profit, live charts and graphs for business analytics.",
     link: "https://one-ocean.vercel.app",
@@ -33,7 +34,8 @@ const projects = [
   },
   {
     title: "Enrollment Management System",
-    image: "/mtcmock.png",
+    gradient: 'linear-gradient(135deg, #0a1a2f, #0f3c63)',
+    image: "/mtcmockup.png",
     description:
       "A responsive web app for a TESDA-accredited training center. Includes course enrollment, student registration, and admin dashboard.",
     link: "https://mtc-ph.vercel.app",
@@ -53,7 +55,8 @@ const projects = [
   },
   {
     title: "E-Commerce Web App",
-    image: "/rscmock.png",
+    gradient: 'linear-gradient(135deg, #0f3d2e, #1b5e3c)',
+    image: "/rscmockup.png",
     description:
       "An e-commerce platform for product listings, cart system, checkout process and full order management functions. It comes with a driver side application for updating order status.",
     link: "https://rsc-online.vercel.app",
@@ -148,430 +151,457 @@ const Projects = () => {
   };
   
 
-  return (
+return (
+  <>
     <section
-      id="projects"
-      className="bg-brand-darktop text-brand-lightbg py-24 px-6 sm:px-10 md:px-20 lg:px-72 xl:px-96 relative z-10"
-    >
-      <div className="mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Projects</h2>
+  id="projects"
+  className="bg-brand-darktop text-brand-lightbg px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 relative z-10"
+>
+  {/* MAIN GRID */}
+  <div className="grid gap-16">
+    {/* ================= LEFT COLUMN — WEB DEV PROJECTS ================= */}
+    <div>
+      <div className="mb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-12">
+          Web Development
+        </h2>
       </div>
 
-      <div className="grid gap-10">
-        {projects.map((project, index) => (
-          <Fragment key={index}>
+      <div className="space-y-12 sm:space-y-16">
+        {projects.map((project, index) => {
+          const isExpanded = expandedIndex === index;
+
+          return (
             <motion.div
+              key={index}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="rounded-xl overflow-hidden min-h-[400px] flex flex-col md:flex-row bg-black pt-12 pb-10 pr-10"
+              className="flex flex-col md:flex-row rounded-2xl overflow-hidden shadow-xl"
+              style={{ background: project.gradient }}
             >
-              {/* IMAGE */}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 sm:p-6 flex justify-center items-center md:w-1/2"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  className="w-full max-h-[500px] object-cover rounded-xl"
-                />
-              </a>
-
-              {/* TEXT */}
-              <div className="p-4 sm:p-6 pt-4 md:pt-8 flex flex-col justify-start md:w-1/2">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
-                  <div>
-                    <h3 className="text-2xl sm:text-3xl font-semibold mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm sm:text-base text-brand-lightbg/80 mb-4">
-                      {project.description}
-                    </p>
-                  </div>
+              {/* LEFT — Content */}
+              <div className="md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col gap-4 sm:gap-6 text-white">
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   {project.logo && (
                     <img
                       src={project.logo}
                       alt={`${project.title} Logo`}
-                      className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-full p-2 shadow-md"
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-md p-1 sm:p-2"
                     />
                   )}
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+                    {project.title}
+                  </h3>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 sm:mt-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-full
+                               bg-white/15 backdrop-blur-md
+                               border border-white/25
+                               text-white font-semibold text-sm
+                               hover:bg-white/25 transition-all shadow-lg"
+                  >
+                    Visit Project
+                    <ArrowUpRight size={16} />
+                  </a>
                 </div>
-  <a
-    href={project.link}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center gap-2 font-bold text-sm sm:text-base text-brand-accent mb-4"
-  >
-    VISIT WEBSITE <ArrowUpRight strokeWidth={3} />
-  </a>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => (
+
+                {/* Description */}
+                <p className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed mt-2 sm:mt-4">
+                  {project.description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-2 sm:mt-4">
+                  {project.tags.map((tag, i) => (
                     <span
-                      key={tagIndex}
-                      className="bg-white/10 text-sm px-3 py-2 rounded-full border border-white/20"
+                      key={i}
+                      className="px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full bg-white/10 border border-white/20"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
+                {/* Toggle */}
                 <button
                   onClick={() => toggleExpand(index)}
-                  className="text-brand-accent/80 text-sm inline-flex items-center gap-1 font-semibold hover:underline"
+                  className="mt-2 sm:mt-4 inline-flex items-center gap-1 text-sm font-semibold text-white/80 hover:text-white transition"
                 >
-                  {expandedIndex === index ? (
-                    <>
-                      Hide Showcase <ChevronUp size={16} />
-                    </>
+                  {isExpanded ? (
+                    <>Hide Showcase <ChevronUp size={16} /></>
                   ) : (
-                    <>
-                      View Showcase <ChevronDown size={16} />
-                    </>
+                    <>View Showcase <ChevronDown size={16} /></>
                   )}
                 </button>
 
+                {/* Showcase */}
                 <AnimatePresence>
-                  {expandedIndex === index && (
+                  {isExpanded && project.showcaseImages && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.4 }}
-                      className="mt-4 overflow-hidden text-sm text-brand-lightbg/70"
+                      className="mt-4 sm:mt-6 overflow-hidden"
                     >
-                      {project.extra && <p className="mb-4">{project.extra}</p>}
-
-                      {project.showcaseImages && (
-                        <div className="relative w-full overflow-hidden">
-                          <motion.div
-                            className="flex gap-4 w-max"
-                            animate={{
-                              x: ["0%", "-50%"],
-                            }}
-                            transition={{
-                              duration: project.showcaseImages.length * 7,
-                              repeat: Infinity,
-                              ease: "linear",
-                            }}
-                          >
-                            {[...project.showcaseImages, ...project.showcaseImages].map(
-                              (img, i) => {
-                                const isSmall =
-                                  img.includes("rsc-7") || img.includes("rsc-8");
-
-                                return (
-                               <img
-  key={i}
-  src={img}
-  alt={`Showcase ${i + 1}`}
-className={`rounded-lg border border-white/10 shadow ${
-  isSmall ? "w-1/2 sm:w-1/4" : "w-full sm:w-3/4"
-} h-auto max-h-80 mx-auto`}
-  loading="lazy"
-/>
-
-                                );
-                              }
-                            )}
-                          </motion.div>
-                        </div>
-                      )}
+                      <div className="relative w-full overflow-x-auto">
+                        <motion.div
+                          className="flex gap-4 w-max"
+                          animate={{ x: ["0%", "-50%"] }}
+                          transition={{
+                            duration: project.showcaseImages.length * 7,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        >
+                          {[...project.showcaseImages, ...project.showcaseImages].map(
+                            (img, i) => (
+                              <img
+                                key={i}
+                                src={img}
+                                alt={`Showcase ${i + 1}`}
+                                className="max-h-60 sm:max-h-72 rounded-lg border border-white/10 shadow-lg"
+                                loading="lazy"
+                              />
+                            )
+                          )}
+                        </motion.div>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
-            </motion.div>
 
-            {index !== projects.length - 1 && (
-              <div className="border-t border-white/30 w-full mt-5 mb-5" />
-            )}
-          </Fragment>
-        ))}
+              {/* RIGHT — Mockup */}
+              <div className="md:w-1/2 p-6 sm:p-8 md:p-10 flex items-center justify-center">
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-cover rounded-2xl hover:scale-[1.02] transition"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
+    </div>
 
-      {/* OTHER PROJECTS SECTION */}
-
-              {/* FIGMA DESIGNS SECTION */}
-      <section className="mt-24 mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">Figma Designs</h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
-          {[
-            {
-              title: "Webpage UI",
-              image: "/other/figma-1.png",
-              desc: "A webpage for a local coffee shop.",
-              link: "https://www.figma.com/proto/gsuWyHQ5NRUtop3PWMRJY4/Sunset-Coffee?page-id=0%3A1&node-id=2-2&p=f&viewport=172%2C178%2C1.12&t=SwpRXOAxf5BtrVbu-1&scaling=scale-down&content-scaling=fixed",
-            },
-            {
-              title: "Sports Team Website UI",
-              image: "/other/figma-2.png",
-              desc: "Fanmade website design for The Golden State Warriors.",
-              link: "https://www.figma.com/proto/e7YXmSrSKpASxSihUYaXVi/Warriors?page-id=0%3A1&node-id=1-2&p=f&viewport=1736%2C1791%2C0.73&t=UYHl5Vqgl7XqOOmH-1&scaling=scale-down&content-scaling=fixed",
-            },
-            {
-              title: "Mobile App UI",
-              image: "/other/figma-3.png",
-              desc: "Design for a shoe brand online shopping app.",
-              link: "https://www.figma.com/proto/3uLLSIGjozZNPwJTQE6mzW/Untitled?page-id=0%3A1&node-id=1-10&p=f&viewport=839%2C711%2C0.5&t=6ZJyCm1RrfJNrxQM-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A10",
-            },
-          ].map((design, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-black rounded-xl overflow-hidden shadow-lg group"
-            >
-              <div className="relative w-full aspect-[16/9] overflow-hidden">
-                <img
-                  src={design.image}
-                  alt={design.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-4 flex flex-col gap-2">
-                <h4 className="text-lg font-semibold">{design.title}</h4>
-                <p className="text-sm text-brand-lightbg/70">{design.desc}</p>
-                {design.link && (
-                  <a
-                    href={design.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-brand-accent text-sm font-semibold hover:underline"
-                  >
-                    View in Figma <ArrowUpRight size={16} />
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-      
-<section className="mt-24">
-  <h2 className="text-3xl md:text-4xl font-bold mb-12">
-    Brand Case Studies
+        {/* ================= RIGHT COLUMN — FIGMA DESIGNS ================= */}
+       <div className="space-y-12 mt-28 mb-10">
+  <h2 className="text-4xl md:text-5xl font-bold text-white text-center">
+    UI Design
   </h2>
 
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {brandCaseStudies.map((brand, idx) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+    {[
+      {
+        title: "Coffee Shop Webpage UI",
+        image: "/other/figma-1.png",
+        desc: "A landing page concept for a local coffee shop.",
+        link: "https://www.figma.com/proto/gsuWyHQ5NRUtop3PWMRJY4/Sunset-Coffee",
+      },
+      {
+        title: "Real Estate Webpage UI",
+        image: "/other/figma-4.png",
+        desc: "A modern real estate website design.",
+        link: "https://www.figma.com/proto/0wNg4xyBhh0zXJwxAcO51P/Untitled",
+      },
+      {
+        title: "Sports Team Website UI",
+        image: "/other/figma-2.png",
+        desc: "Fan-made website design for the Golden State Warriors.",
+        link: "https://www.figma.com/proto/e7YXmSrSKpASxSihUYaXVi/Warriors",
+      },
+      {
+        title: "Shoe Brand Mobile App UI",
+        image: "/other/figma-3.png",
+        desc: "Mobile shopping app UI for a shoe brand.",
+        link: "https://www.figma.com/proto/3uLLSIGjozZNPwJTQE6mzW/Untitled",
+      },
+    ].map((design, idx) => (
       <motion.div
         key={idx}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5 }}
-        className="bg-black rounded-xl p-6"
+        transition={{ duration: 0.6, delay: idx * 0.1 }}
+        className="group relative rounded-2xl overflow-hidden
+           bg-white/5 backdrop-blur-lg
+           border border-white/10
+           shadow-xl
+           transition-all duration-500
+           hover:-translate-y-2 hover:shadow-2xl"
       >
-        {/* THUMBNAIL / PREVIEW */}
-        <img
-          src={brand.thumbnail}
-          alt={brand.brand}
-          className="w-full rounded-lg mb-4 object-cover"
-          loading="lazy"
-        />
-
-        <div className="flex justify-between items-center">
-          <h3 className="text-xl font-semibold">{brand.brand}</h3>
-          <button
-            onClick={() =>
-              setExpandedBrand(expandedBrand === idx ? null : idx)
-            }
-            className="text-brand-accent flex items-center gap-1 font-semibold"
-          >
-            {expandedBrand === idx ? (
-              <>
-                Hide Details <ChevronUp size={16} />
-              </>
-            ) : (
-              <>
-                View Details <ChevronDown size={16} />
-              </>
-            )}
-          </button>
+        {/* IMAGE */}
+        <div className="relative h-80 md:h-[26rem] lg:h-[30rem] overflow-hidden">
+          <img
+            src={design.image}
+            alt={design.title}
+            className="w-full h-full object-cover object-top
+           transition-transform duration-700 ease-out
+           group-hover:scale-110"
+            loading="lazy"
+          />
+          <div className="absolute inset-0" />
         </div>
 
-        {/* COLLAPSIBLE CONTENT */}
-        <AnimatePresence>
-          {expandedBrand === idx && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="overflow-hidden mt-4"
-            >
-              <p className="text-sm text-brand-lightbg/70 mb-4">
-                {brand.description}
-              </p>
+        {/* CONTENT */}
+        <div className="p-6 flex flex-col gap-3 text-white">
+          <h4 className="text-xl font-semibold">
+            {design.title}
+          </h4>
 
-              <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
-                {brand.images.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img}
-                    alt={`${brand.brand} showcase ${i + 1}`}
-                    className="rounded-lg border border-white/10 object-cover"
-                    loading="lazy"
-                  />
-                ))}
-              </div>
+          <p className="text-white/70 text-sm md:text-base">
+            {design.desc}
+          </p>
 
-              {brand.link && (
-                <a
-                  href={brand.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-4 text-brand-accent text-sm font-semibold hover:underline"
+          {/* CTA */}
+          <a
+            href={design.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-flex items-center gap-2 px-4 py-2 rounded-full
+                       bg-white/10 backdrop-blur-md
+                       border border-white/20
+                       text-white text-sm font-semibold
+                       hover:bg-white/20 transition-all w-fit"
+          >
+            View in Figma
+            <ArrowUpRight size={16} />
+          </a>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
+
+      </div>
+    </section>
+      
+{/* ================= BRAND SOCIAL MEDIA POSTS ================= */}
+<section className="bg-brand-darktop text-brand-lightbg py-24 px-6 sm:px-10 md:px-20 lg:px-32 xl:px-48">
+  <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+    Graphic Design
+  </h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {brandCaseStudies.map((brand, idx) => {
+      const isExpanded = expandedBrand === idx;
+
+      return (
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+          className="group relative rounded-2xl overflow-hidden
+                     bg-white/5 backdrop-blur-md border border-white/10
+                     shadow-xl transition-all duration-500
+                     hover:-translate-y-2 hover:shadow-2xl"
+        >
+          {/* THUMBNAIL */}
+     <div className="relative h-[28rem] md:h-[34rem] lg:h-[40rem] overflow-hidden rounded-2xl">
+  <img
+    src={brand.thumbnail}
+    alt={brand.brand}
+    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+    loading="lazy"
+  />
+  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-opacity duration-500" />
+</div>
+
+          {/* CONTENT */}
+          <div className="p-6 md:p-8 flex flex-col gap-4 text-white">
+            <div className="flex justify-between items-center">
+              <h3 className="text-xl md:text-2xl font-semibold">{brand.brand}</h3>
+              <button
+  onClick={() => setExpandedBrand(isExpanded ? null : idx)}
+  className="inline-flex items-center gap-2 px-4 py-2 rounded-full
+             bg-white/10 backdrop-blur-md border border-white/20
+             text-white font-semibold text-sm
+             hover:bg-white/20 hover:scale-[1.05]
+             transition-all duration-300 shadow-md"
+>
+  {isExpanded ? (
+    <>
+      Hide Details <ChevronUp size={16} />
+    </>
+  ) : (
+    <>
+      View Details <ChevronDown size={16} />
+    </>
+  )}
+</button>
+            </div>
+
+            {/* EXPANDED SHOWCASE */}
+            <AnimatePresence>
+              {isExpanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="overflow-hidden mt-4 flex flex-col gap-4"
                 >
-                  View Full Brand <ArrowUpRight size={16} />
-                </a>
+                  <p className="text-sm text-white/70">{brand.description}</p>
+
+                  <div className="grid grid-cols-1 gap-4">
+                    {brand.images.map((img, i) => (
+                      <img
+                        key={i}
+                        src={img}
+                        alt={`${brand.brand} showcase ${i + 1}`}
+                        className="rounded-lg border border-white/10 object-cover h-56 md:h-60 w-full"
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
+                </motion.div>
               )}
-            </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      );
+    })}
+  </div>
+</section>
+
+
+{/* ================= POSTERS ================= */}
+<section className="bg-brand-darktop text-brand-lightbg py-24 px-6 sm:px-10 md:px-20 lg:px-32 xl:px-48">
+  <h2 className="text-3xl md:text-4xl font-bold mb-12">Sports Posters</h2>
+
+  <div className="relative w-full overflow-hidden">
+    <motion.div
+      className="flex gap-6 w-max"
+      animate={{ x: ["0%", "-50%"] }}
+      transition={{
+        duration: 80,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+    >
+      {[
+        "/other/poster-1.png",
+        "/other/poster-2.png",
+        "/other/poster-3.png",
+        "/other/poster-4.png",
+        "/other/poster-5.png",
+      ].concat([
+        "/other/poster-1.png",
+        "/other/poster-2.png",
+        "/other/poster-3.png",
+        "/other/poster-4.png",
+        "/other/poster-5.png",
+      ]).map((img, i) => (
+        <img
+          key={i}
+          src={img}
+          alt={`Scrolling Showcase ${i + 1}`}
+          className="h-[600px] w-auto rounded-lg shadow border border-white/10 object-contain"
+          loading="lazy"
+        />
+      ))}
+    </motion.div>
+  </div>
+
+  <div className="relative w-full overflow-hidden mt-10">
+    <motion.div
+      className="flex gap-6 w-max"
+      animate={{ x: ["-50%", "0%"] }}
+      transition={{
+        duration: 80,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+    >
+      {[
+        "/other/poster-6.png",
+        "/other/poster-7.png",
+        "/other/poster-8.png",
+        "/other/poster-9.png",
+        "/other/poster-10.png",
+        "/other/poster-11.png",
+        "/other/poster-12.png",
+      ].concat([
+        "/other/poster-6.png",
+        "/other/poster-7.png",
+        "/other/poster-8.png",
+        "/other/poster-9.png",
+        "/other/poster-10.png",
+        "/other/poster-11.png",
+        "/other/poster-12.png",
+      ]).map((img, i) => (
+        <img
+          key={i}
+          src={img}
+          alt={`Scrolling Showcase ${i + 1}`}
+          className="h-[600px] w-auto rounded-lg shadow border border-white/10 object-contain"
+          loading="lazy"
+        />
+      ))}
+    </motion.div>
+  </div>
+</section>
+
+{/* ================= OTHER DESIGNS ================= */}
+<section className="bg-brand-darktop text-brand-lightbg py-24 px-6 sm:px-10 md:px-20 lg:px-32 xl:px-48">
+  <h2 className="text-3xl md:text-4xl font-bold mb-12">Other Designs</h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {otherProjects.map((item, idx) => (
+      <motion.div
+        key={idx}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, delay: idx * 0.1 }}
+        className="bg-black p-4 rounded-xl shadow-md flex flex-col items-start gap-3 relative"
+      >
+        <div className="relative w-full aspect-[5/5] overflow-hidden rounded-lg">
+          <img
+            src={item.images[imageIndices[idx]]}
+            alt={item.title}
+            className="w-full h-full object-contain rounded-lg"
+            loading="lazy"
+          />
+
+          {item.images.length > 1 && (
+            <div className="absolute top-1/2 left-0 right-0 flex justify-between px-2 -translate-y-1/2">
+              <button
+                onClick={() => handlePrev(idx)}
+                className="bg-black/60 text-white p-1 rounded-full hover:bg-black/60"
+              >
+                <ChevronLeft size={16} />
+              </button>
+              <button
+                onClick={() => handleNext(idx)}
+                className="bg-black/60 text-white p-1 rounded-full hover:bg-black/60"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </div>
           )}
-        </AnimatePresence>
+        </div>
+
+        <h4 className="text-lg font-semibold">{item.title}</h4>
+        <p className="text-sm text-brand-lightbg/70">{item.desc}</p>
       </motion.div>
     ))}
   </div>
 </section>
-
-       {/* CONTINUOUS SCROLLING IMAGE STRIP */}
-      <section className="mt-24">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">
-          Posters
-        </h2>
-
-        <div className="relative w-full overflow-hidden">
-          <motion.div
-            className="flex gap-6 w-max"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              duration: 80, // adjust speed here
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          >
-            {[ 
-              "/other/poster-1.png",
-              "/other/poster-2.png",
-              "/other/poster-3.png",
-              "/other/poster-4.png",
-              "/other/poster-5.png",
-            ].concat([
-              "/other/poster-1.png",
-              "/other/poster-2.png",
-              "/other/poster-3.png",
-              "/other/poster-4.png",
-              "/other/poster-5.png",
-            ]) 
-              .map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt={`Scrolling Showcase ${i + 1}`}
-                className="h-[600px] w-auto rounded-lg shadow border border-white/10 object-contain"
-                loading="lazy"
-              />
-            ))}
-          </motion.div>
-        </div>
-      </section>
-      {/* CONTINUOUS SCROLLING IMAGE STRIP */}
-      <section className="mt-10">
-        <div className="relative w-full overflow-hidden">
-          <motion.div
-            className="flex gap-6 w-max"
-            animate={{ x: ["-50%", "0%"] }}
-            transition={{
-              duration: 80, // adjust speed here
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          >
-            {[ 
-              "/other/poster-6.png",
-              "/other/poster-7.png",
-              "/other/poster-8.png",
-              "/other/poster-9.png",
-              "/other/poster-10.png",
-              "/other/poster-11.png",
-               "/other/poster-12.png",
-            ].concat([
-              "/other/poster-6.png",
-              "/other/poster-7.png",
-              "/other/poster-8.png",
-              "/other/poster-9.png",
-              "/other/poster-10.png",
-              "/other/poster-11.png",
-               "/other/poster-12.png",
-            ]) 
-              .map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt={`Scrolling Showcase ${i + 1}`}
-                className="h-[600px] w-auto rounded-lg shadow border border-white/10 object-contain"
-                loading="lazy"
-              />
-            ))}
-          </motion.div>
-        </div>
-      </section>
-<section className="mt-24">
-  <h2 className="text-3xl md:text-4xl font-bold mb-12">
-          Other Designs
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {otherProjects.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-black p-4 rounded-xl shadow-md flex flex-col items-start gap-3 relative"
-            >
-              <div className="relative w-full aspect-[5/5] overflow-hidden rounded-lg">
-     <img
-  src={item.images[imageIndices[idx]]}
-  alt={item.title}
-  className="w-full h-full object-contain rounded-lg"
-  loading="lazy"
-/>
-
-                {item.images.length > 1 && (
-                  <div className="absolute top-1/2 left-0 right-0 flex justify-between px-2 -translate-y-1/2">
-                    <button
-                      onClick={() => handlePrev(idx)}
-                      className="bg-black/60 text-white p-1 rounded-full hover:bg-black/60"
-                    >
-                      <ChevronLeft size={16} />
-                    </button>
-                    <button
-                      onClick={() => handleNext(idx)}
-                      className="bg-black/60 text-white p-1 rounded-full hover:bg-black/60"
-                    >
-                      <ChevronRight size={16} />
-                    </button>
-                  </div>
-                )}
-              </div>
-
-              <h4 className="text-lg font-semibold">{item.title}</h4>
-              <p className="text-sm text-brand-lightbg/70">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div></section>
-      
-        </section>
+</>
   );
 };
 
