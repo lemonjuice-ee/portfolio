@@ -94,7 +94,7 @@ const Profile = () => {
 
   {/* Download Resume */}
   <a
-    href="/Resume 2026 - Fritz Adrian Yu.pdf"
+    href="/Resume2026-FritzAdrianYu.pdf"
     download
     className="bg-white/10 text-sm text-brand-lightbg px-3 py-2 rounded-md border border-white/20 transition-shadow hover:shadow-[0_0_10px_rgba(255,255,255,0.6)] mr-1"
   >
