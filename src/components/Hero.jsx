@@ -147,7 +147,7 @@ const handleSubmit = async (e) => {
       {/* Content */}
       <div className="text-center max-w-full md:max-w-2xl animate-fade-in z-10">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-          Hi, I'm Fritz Yu
+          Hi, I'm Fritz Adrian Yu
         </h1>
 
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-brand-lightbg mb-6 relative inline-block border-r-4 border-brand-lightbg animate-typewriter w-full max-w-xs sm:max-w-md md:max-w-2xl mx-auto">

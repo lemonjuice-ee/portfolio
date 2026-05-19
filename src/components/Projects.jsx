@@ -16,7 +16,7 @@ const projects = [
     gradient: 'linear-gradient(135deg, #004080, #00264d)',
     image: "/etsmockup.png",
     description:
-      "A sales monitoring application for a local seafood supplier business. Includes theme toggle, CRUD function, sales and profit, live charts and graphs for business analytics.",
+      "A sales monitoring application for a local seafood supplier business. Includes theme toggle, CRUD function, sales and profit, live charts and graphs for business analytics. (Website cant be visited due to business privacy)",
     link: "https://one-ocean.vercel.app",
     logo: "/eslogo.png",
     tags: ["Next.js", "Tailwind CSS", "Prisma", "TypeScript"],
@@ -95,6 +95,47 @@ const brandCaseStudies = [
     images: [
       "/brands/AtuaCarouselFull.png",
     ],
+  },
+];
+
+// OTHER PROJECTS DATA (multiple images support)
+const clientProjects = [
+  {
+    images: ["/other/POM 1.png"],
+  },
+  {
+    images: ["/other/POM 2.png"],
+  },
+  
+  {
+    images: ["/other/LVS.png"],
+  },
+   {
+    images: ["/other/LVS (2).png"],
+  },
+  {
+    images: ["/other/BLR.png"],
+  },
+   {
+    images: ["/other/BLR (2).png"],
+  },
+    {
+    images: ["/other/BLR (3).png"],
+  },
+   {
+    images: ["/other/BLR (4).png"],
+  },
+  {
+    images: ["/other/BLR (5).png"],
+  },
+  {
+    images: ["/other/BLR (6).png"],
+  },
+   {
+    images: ["/other/BLR (7).png"],
+  },
+  {
+    images: ["/other/LVS (3).png"],
   },
 ];
 
@@ -476,6 +517,31 @@ return (
     })}
   </div>
 </section>
+{/* ================= GRAPHIC DESIGN — MASONRY ================= */}
+<section className="bg-brand-darktop text-brand-lightbg py-24 px-6 sm:px-10 md:px-20 lg:px-32 xl:px-48">
+  <div className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-4">
+    {clientProjects.map((item, idx) => (
+      <motion.div
+        key={idx}
+        className="mb-4 break-inside-avoid group cursor-pointer"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: idx * 0.05 }}
+      >
+        <div className="relative overflow-hidden rounded-xl">
+          <img
+            src={item.images[0]}
+            alt={item.title}
+            className="w-full object-cover transition duration-500 group-hover:scale-105"
+          />
+
+          {/* HOVER OVERLAY */}
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition" />
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</section>
 
 
 {/* ================= POSTERS ================= */}
@@ -498,12 +564,14 @@ return (
         "/other/poster-3.png",
         "/other/poster-4.png",
         "/other/poster-5.png",
+        "/other/poster-13.png",
       ].concat([
         "/other/poster-1.png",
         "/other/poster-2.png",
         "/other/poster-3.png",
         "/other/poster-4.png",
         "/other/poster-5.png",
+        "/other/poster-13.png",
       ]).map((img, i) => (
         <img
           key={i}
@@ -534,6 +602,7 @@ return (
         "/other/poster-10.png",
         "/other/poster-11.png",
         "/other/poster-12.png",
+        "/other/poster-14.png",
       ].concat([
         "/other/poster-6.png",
         "/other/poster-7.png",
@@ -542,6 +611,7 @@ return (
         "/other/poster-10.png",
         "/other/poster-11.png",
         "/other/poster-12.png",
+        "/other/poster-14.png",
       ]).map((img, i) => (
         <img
           key={i}
