@@ -107,6 +107,9 @@ const clientProjects = [
     images: ["/other/POM 2.png"],
   },
   
+    {
+    images: ["/other/POM 3.png"],
+  },
   {
     images: ["/other/LVS.png"],
   },
