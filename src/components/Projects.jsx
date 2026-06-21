@@ -169,6 +169,8 @@ const Projects = () => {
     otherProjects.map(() => 0)
   );
   const [expandedBrand, setExpandedBrand] = useState(null);
+  const [activePreview, setActivePreview] = useState(null);
+// { projectIndex, imageIndex }
 
 
   const toggleExpand = (index) => {
@@ -531,16 +533,23 @@ return (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: idx * 0.05 }}
       >
-        <div className="relative overflow-hidden rounded-xl">
-          <img
-            src={item.images[0]}
-            alt={item.title}
-            className="w-full object-cover transition duration-500 group-hover:scale-105"
-          />
+       <div
+  className="relative overflow-hidden rounded-xl cursor-pointer group"
+  onClick={() =>
+    setActivePreview({
+      projectIndex: idx,
+      imageIndex: 0,
+    })
+  }
+>
+  <img
+    src={item.images[0]}
+    alt={item.title}
+    className="w-full object-cover transition duration-500 group-hover:scale-105"
+  />
 
-          {/* HOVER OVERLAY */}
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition" />
-        </div>
+  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition" />
+</div>
       </motion.div>
     ))}
   </div>
@@ -674,6 +683,31 @@ return (
     ))}
   </div>
 </section>
+<AnimatePresence>
+  {activePreview && (
+    <motion.div
+      className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setActivePreview(null)}
+    >
+      <motion.img
+        src={
+          clientProjects[activePreview.projectIndex].images[
+            activePreview.imageIndex
+          ]
+        }
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        className="max-w-[90vw] max-h-[90vh] rounded-xl shadow-2xl border border-white/10"
+        onClick={(e) => e.stopPropagation()}
+      />
+    </motion.div>
+  )}
+</AnimatePresence>
 </>
   );
 };
