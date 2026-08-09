@@ -111,6 +111,9 @@ const clientProjects = [
     images: ["/other/POM 3.png"],
   },
   {
+    images: ["/other/POM 4.png"],
+  },
+  {
     images: ["/other/LVS.png"],
   },
    {
@@ -136,6 +139,9 @@ const clientProjects = [
   },
    {
     images: ["/other/BLR (7).png"],
+  },
+{
+    images: ["/other/BLR (8).png"],
   },
   {
     images: ["/other/LVS (3).png"],
@@ -206,7 +212,7 @@ return (
   {/* MAIN GRID */}
   <div className="grid gap-16">
     {/* ================= LEFT COLUMN — WEB DEV PROJECTS ================= */}
-    <div>
+    <div id="web-development">
       <div className="mb-12 text-center">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-12">
           Web Development
@@ -341,7 +347,7 @@ return (
     </div>
 
         {/* ================= RIGHT COLUMN — FIGMA DESIGNS ================= */}
-       <div className="space-y-12 mt-28 mb-10">
+       <div id="ui-design" className="space-y-12 mt-28 mb-10">
   <h2 className="text-4xl md:text-5xl font-bold text-white text-center">
     UI Design
   </h2>
@@ -434,7 +440,7 @@ return (
     </section>
       
 {/* ================= BRAND SOCIAL MEDIA POSTS ================= */}
-<section className="bg-brand-darktop text-brand-lightbg py-24 px-6 sm:px-10 md:px-20 lg:px-32 xl:px-48">
+<section  id="graphic-design" className="bg-brand-darktop text-brand-lightbg py-24 px-6 sm:px-10 md:px-20 lg:px-32 xl:px-48">
   <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
     Graphic Design
   </h2>

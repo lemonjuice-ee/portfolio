@@ -156,21 +156,43 @@ const handleSubmit = async (e) => {
         </p>
 
         {/* Skill badges */}
-        <div className="flex flex-wrap gap-4 justify-center mb-8">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg">
-            <Globe className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
-            Web Development
-          </div>
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg">
-            <Figma className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
-            UI Design
-          </div>
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg">
-            <PenTool className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
-            Graphic Design
-          </div>
-        </div>
+<div className="flex flex-wrap gap-4 justify-center mb-8">
+  <div
+    onClick={() =>
+      document
+        .getElementById("web-development")
+        ?.scrollIntoView({ behavior: "smooth" })
+    }
+    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg cursor-pointer hover:bg-white/10 transition-all duration-300"
+  >
+    <Globe className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+    Web Development
+  </div>
 
+  <div
+    onClick={() =>
+      document
+        .getElementById("ui-design")
+        ?.scrollIntoView({ behavior: "smooth" })
+    }
+    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg cursor-pointer hover:bg-white/10 transition-all duration-300"
+  >
+    <Figma className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+    UI Design
+  </div>
+
+  <div
+    onClick={() =>
+      document
+        .getElementById("graphic-design")
+        ?.scrollIntoView({ behavior: "smooth" })
+    }
+    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg cursor-pointer hover:bg-white/10 transition-all duration-300"
+  >
+    <PenTool className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+    Graphic Design
+  </div>
+</div>
         {/* Action buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
