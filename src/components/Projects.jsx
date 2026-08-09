@@ -17,10 +17,10 @@ const projects = [
     image: "/etsmockup.png",
     description:
       "A sales monitoring application for a local seafood supplier business. Includes theme toggle, CRUD function, sales and profit, live charts and graphs for business analytics. (Website cant be visited due to business privacy)",
-    link: "https://one-ocean.vercel.app",
+    link: "https://onestop-vs.vercel.app",
     logo: "/eslogo.png",
     tags: ["Next.js", "Tailwind CSS", "Prisma", "TypeScript"],
-    extra: "Built for Etts Seafood. (This Version is a clone only)",
+    extra: "Built for Etts Seafood. (This Version is a clone only, for Demo purposes)",
     showcaseImages: [
       "/showcase/es-2.png",
       "/showcase/es-1.png",
