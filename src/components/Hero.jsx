@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Mail,Phone,MapPin} from "lucide-react";
 import { Facebook, Linkedin, Github } from 'lucide-react';
-import { Globe, Figma, PenTool } from "lucide-react";
+import { Globe, Figma, PenTool, Palette} from "lucide-react";
 
 // Triangle config
 const triangles = [
@@ -184,14 +184,28 @@ const handleSubmit = async (e) => {
   <div
     onClick={() =>
       document
-        .getElementById("graphic-design")
+        .getElementById("video-edit")
         ?.scrollIntoView({ behavior: "smooth" })
     }
     className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg cursor-pointer hover:bg-white/10 transition-all duration-300"
   >
     <PenTool className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
-    Graphic Design
+    Video Editing
   </div>
+
+
+<div
+  onClick={() =>
+    document
+      .getElementById("graphic-design")
+      ?.scrollIntoView({ behavior: "smooth" })
+  }
+  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-sm sm:text-base font-semibold shadow-lg cursor-pointer hover:bg-white/10 transition-all duration-300"
+>
+  <Palette className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+  Graphic Design
+</div>
+  
 </div>
         {/* Action buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

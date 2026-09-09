@@ -148,6 +148,41 @@ const clientProjects = [
   },
 ];
 
+const videoEdits = [
+  {
+    title: "How Peptides Deliver Messages to Cells",
+    video: "/videos/how peptides deliver messages to cells.mp4",
+  },
+  {
+    title: "How Insulin was Discovered",
+    video: "/videos/insulin.mp4",
+  },
+  {
+    title: "How to Spot a Fake COA",
+    video: "/videos/6_CoAs fake.mp4",
+  },
+   {
+    title: "How much BAC Water is needed",
+    video: "/videos/how much bac water.mp4",
+  },
+  {
+    title: "There's About 5000 Trillion Mitochondria",
+    video: "/videos/Dr. Picard Mitochondria.mp4",
+  },
+   {
+    title: "History of BPC-157",
+    video: "/videos/BPC..mp4",
+  },
+   {
+    title: "PEPTIDE QUIZ",
+    video: "/videos/PEPTIDE QUIZ 2.mp4",
+  },
+  {
+    title: "The MEDSPA Blueprint",
+    video: "/videos/8steps Spa Version.mp4",
+  },
+];
+
 
 // OTHER PROJECTS DATA (multiple images support)
 const otherProjects = [
@@ -176,6 +211,7 @@ const Projects = () => {
   );
   const [expandedBrand, setExpandedBrand] = useState(null);
   const [activePreview, setActivePreview] = useState(null);
+  const [activeVideo, setActiveVideo] = useState(null);
 // { projectIndex, imageIndex }
 
 
@@ -642,6 +678,122 @@ return (
     </motion.div>
   </div>
 </section>
+{/* ================= VIDEO EDITS ================= */}
+<section
+  id="video-edit"
+  className="video-edit bg-brand-darktop text-brand-lightbg py-24 px-6 sm:px-10 md:px-20 lg:px-32 xl:px-48"
+>
+  <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+    Video Editing
+  </h2>
+
+  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+    {videoEdits.map((video, idx) => (
+      <motion.div
+        key={idx}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, delay: idx * 0.05 }}
+        className="
+          group cursor-pointer
+          rounded-2xl overflow-hidden
+          bg-white/5
+          border border-white/10
+          hover:-translate-y-2
+          hover:shadow-2xl
+          transition-all duration-500
+        "
+        onClick={() => setActiveVideo(video.video)}
+      >
+        {/* Video Preview */}
+        <div className="relative aspect-[9/16] overflow-hidden">
+          <video
+            src={video.video}
+            muted
+            playsInline
+            preload="metadata"
+            className="
+              w-full h-full object-cover
+              transition-transform duration-700
+              group-hover:scale-105
+            "
+          />
+
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-300" />
+
+          {/* Play Button */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className="
+                w-14 h-14 rounded-full
+                bg-black/50 backdrop-blur-md
+                border border-white/20
+                flex items-center justify-center
+                transition-transform duration-300
+                group-hover:scale-110
+              "
+            >
+              <svg
+                width="22"
+                height="22"
+                fill="white"
+                viewBox="0 0 24 24"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Title */}
+        <div className="p-3">
+          <h3 className="text-sm font-medium text-white line-clamp-2">
+            {video.title}
+          </h3>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
+{/* ================= VIDEO MODAL ================= */}
+<AnimatePresence>
+  {activeVideo && (
+    <motion.div
+      className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setActiveVideo(null)}
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <video
+          src={activeVideo}
+  controls
+  controlsList="nodownload noplaybackrate"
+  disablePictureInPicture
+  onContextMenu={(e) => e.preventDefault()}
+  autoPlay
+  playsInline
+          className="
+            max-h-[90vh]
+            max-w-[90vw]
+            rounded-xl
+            shadow-2xl
+          "
+        />
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
 {/* ================= OTHER DESIGNS ================= */}
 <section className="bg-brand-darktop text-brand-lightbg py-24 px-6 sm:px-10 md:px-20 lg:px-32 xl:px-48">
