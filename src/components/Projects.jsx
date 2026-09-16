@@ -149,6 +149,10 @@ const clientProjects = [
 ];
 
 const videoEdits = [
+ {
+    title: "SMP ad",
+    video: "/videos/UNION Barbers SMP.mp4",
+  },
   {
     title: "How Peptides Deliver Messages to Cells",
     video: "/videos/how peptides deliver messages to cells.mp4",
@@ -176,10 +180,6 @@ const videoEdits = [
    {
     title: "PEPTIDE QUIZ",
     video: "/videos/PEPTIDE QUIZ 2.mp4",
-  },
-  {
-    title: "The MEDSPA Blueprint",
-    video: "/videos/8steps Spa Version.mp4",
   },
 ];
 
