@@ -146,12 +146,20 @@ const clientProjects = [
   {
     images: ["/other/LVS (3).png"],
   },
+  {
+    images: ["/other/SIR.png"],
+  },
 ];
 
 const videoEdits = [
  {
     title: "SMP ad",
     video: "/videos/UNION Barbers SMP.mp4",
+  },
+
+   {
+    title: "Workplace Safety",
+    video: "/videos/SIR Workplace Safety.mp4",
   },
   {
     title: "How Peptides Deliver Messages to Cells",
@@ -176,10 +184,6 @@ const videoEdits = [
    {
     title: "History of BPC-157",
     video: "/videos/BPC..mp4",
-  },
-   {
-    title: "PEPTIDE QUIZ",
-    video: "/videos/PEPTIDE QUIZ 2.mp4",
   },
 ];
 
